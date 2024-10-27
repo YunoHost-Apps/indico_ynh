@@ -30,8 +30,13 @@ ynh_script_progression "Adding $app's configuration files..."
 #=================================================
 ynh_script_progression "Adding system configurations related to $app..."
 
-python3 -m venv "$install_dir"
+python3 -m venv --upgrade-deps --prompt indico "$install_dir/.venv"
+source ~/.venv/bin/activate
 $install_dir/bin/pip3 install -r "$install_dir/requirements.txt"
+echo 'source ~/.venv/bin/activate' >> ~/.bashrc
+pip install setuptools wheel
+pip install uwsgi
+pip install indico
 
 # Create a PHP-FPM config (with conf/extra_php-fpm.conf being appended to it)
 ynh_config_add_phpfpm
