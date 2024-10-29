@@ -25,6 +25,8 @@ chown -R "$app:www-data" "$install_dir"
 #=================================================
 ynh_script_progression "Adding $app's configuration files..."
 
+ynh_add_config --template="../conf/uwsgi-indico.ini" --destination="$install_dir/uwsgi-indico.ini"
+
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
