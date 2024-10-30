@@ -98,7 +98,7 @@ ram.runtime = "50M"
     #    ynh_setup_source --dest_dir="$install_dir"
     # You can also define other assets than "main" and add --source_id="foobar" in the previous command
     url = "https://github.com/indico/indico/archive/refs/tags/v3.3.4.tar.gz"
-    sha256 = "BE77A2C8E04D54F13B91EDD14C6F9636F0C658401B08CA05B65853C6647B43ED"
+    sha256 = "be77a2c8e04d54f13b91edd14c6f9636f0c658401b08ca05b65853c6647b43ed"
 
     # These infos are used by https://github.com/YunoHost/apps/blob/master/tools/autoupdate_app_sources/autoupdate_app_sources.py
     # to auto-update the previous asset urls and sha256sum + manifest version
