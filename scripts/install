@@ -44,12 +44,13 @@ ynh_script_progression "Adding system configurations related to $app..."
 pushd $install_dir
 
 python3 -m venv --upgrade-deps --prompt indico "$install_dir/.venv"
-source ~/.venv/bin/activate
+source $install_dir/.venv/bin/activate
 $install_dir/bin/pip3 install -r "$install_dir/requirements.txt"
-echo 'source ~/.venv/bin/activate' >> ~/.bashrc
+echo 'source $install_dir/.venv/bin/activate' >> ~/.bashrc
 pip install setuptools wheel
 pip install uwsgi
 pip install indico
+indico db prepare
 
 popd
 
