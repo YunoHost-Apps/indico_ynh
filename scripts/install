@@ -46,7 +46,7 @@ pushd $install_dir
 
 python3 -m venv --upgrade-deps --prompt indico "$install_dir/.venv"
 source $install_dir/.venv/bin/activate
-$install_dir/bin/pip3 install -r "$install_dir/requirements.txt"
+#$install_dir/bin/pip3 install -r "$install_dir/requirements.txt"
 echo 'source $install_dir/.venv/bin/activate' >> ~/.bashrc
 pip install setuptools wheel
 pip install uwsgi
