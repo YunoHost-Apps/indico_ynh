@@ -36,6 +36,7 @@ ynh_script_progression "Adding $app's configuration files..."
 
 ynh_config_add --template="../conf/uwsgi-indico.ini" --destination="$install_dir/uwsgi-indico.ini"
 ynh_config_add --template="../conf/indico.conf" --destination="$install_dir/indico.conf"
+ynh_config_add --template="../conf/.env" --destination="$install_dir/.env"
 
 #=================================================
 # SYSTEM CONFIGURATION
