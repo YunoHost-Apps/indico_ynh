@@ -46,7 +46,7 @@ pushd $install_dir
     ynh_hide_warnings $install_dir/venv/bin/pip install python-dotenv
     ynh_hide_warnings $install_dir/venv/bin/pip install indico-plugins
     su - postgres -c 'psql $db_name -c "CREATE EXTENSION unaccent; CREATE EXTENSION pg_trgm;"'
-    indico db prepare
+    ynh_exec_as $app $install_dir/indico db prepare
 popd
 
 chown -R "$app:www-data" "$install_dir" 
