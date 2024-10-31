@@ -43,7 +43,7 @@ pushd $install_dir
     python3 -m venv $install_dir/venv
     ynh_hide_warnings $install_dir/venv/bin/pip install --upgrade pip setuptools wheel uwsgi
     ynh_hide_warnings $install_dir/venv/bin/pip install indico
-    ynh_hide_warnings $install_dir/venv/bin/python3 -m indico db prepare
+    indico db prepare
 popd
 
 #=================================================
