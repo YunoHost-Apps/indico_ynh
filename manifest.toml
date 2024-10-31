@@ -4,8 +4,8 @@ packaging_format = 2
 
 id = "indico"
 name = "Indico"
-description.en = "A feature-rich event management system, made @ CERN, the place where the Web was born."
-description.fr = "Un système de gestion d'événements riche en fonctionnalités, réalisé au CERN, le lieu où le Web est né."
+description.en = "Feature-rich event management system"
+description.fr = "Système de gestion d'événements riche en fonctionnalités"
 
 version = "3.3.4~ynh1"
 
