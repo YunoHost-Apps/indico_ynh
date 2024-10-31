@@ -3,13 +3,14 @@ Description=Indico Celery
 After=network.target
 
 [Service]
-ExecStart=__INSTALL_DIR__/.venv/bin/indico celery worker -B
+Type=simple
+User=__APP__
+Group=__APP__
+ExecStart=__INSTALL_DIR__/venv/bin/indico celery worker -B
 Restart=always
 SyslogIdentifier=indico-celery
-User=indico
-Group=www-data
 UMask=0027
-Type=simple
+
 KillMode=mixed
 TimeoutStopSec=300
 
