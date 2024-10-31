@@ -129,7 +129,7 @@ ram.runtime = "50M"
     [resources.apt]
     # This will automatically install/uninstall the following apt packages
     # and implicitly define the $phpversion setting as 8.0 (if phpX.Y-foobar dependencies are listed)
-    packages = "postgresql, libpq-dev, libxslt1-dev, libxml2-dev, libffi-dev, libpcre3-dev, libyaml-dev, libssl-dev, zlib1g-dev, libbz2-dev, libreadline-dev, libsqlite3-dev, libncurses5-dev, libncursesw5-dev, xz-utils, liblzma-dev, uuid-dev, build-essential, libpango1.0-dev, libjpeg62-turbo-dev"
+    packages = "postgresql, libpq-dev, libxslt1-dev, libxml2-dev, libffi-dev, libpcre3-dev, libyaml-dev, libssl-dev, zlib1g-dev, libbz2-dev, libreadline-dev, libsqlite3-dev, libncurses5-dev, libncursesw5-dev, xz-utils, liblzma-dev, uuid-dev, build-essential, libpango1.0-dev, libjpeg62-turbo-dev, postgresql-contrib, python3-venv, libpq-dev, python3-pip, python3-dev, libpq-dev"
 
     [resources.database]
     # This will automatically provision/deprovison a MySQL DB and store the corresponding credentials in settings $db_user, $db_name, $db_pwd
