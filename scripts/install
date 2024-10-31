@@ -44,7 +44,8 @@ pushd $install_dir
     ynh_hide_warnings $install_dir/venv/bin/pip install --upgrade pip setuptools wheel uwsgi
     ynh_hide_warnings $install_dir/venv/bin/pip install indico
     ynh_hide_warnings $install_dir/venv/bin/pip install python-dotenv
-    #indico db prepare
+    ynh_hide_warnings $install_dir/venv/bin/pip install indico-plugins
+    indico db prepare
 popd
 
 chown -R "$app:www-data" "$install_dir" 
