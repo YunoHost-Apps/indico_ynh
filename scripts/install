@@ -31,7 +31,7 @@ touch "$install_dir/web/uwsgi-stats.sock"
 ynh_script_progression "Adding $app's configuration files..."
 
 ynh_config_add --template="uwsgi-indico.ini" --destination="$install_dir/uwsgi-indico.ini"
-ynh_config_add --template="indico.conf" --destination="$install_dir/indico.conf"
+ynh_config_add --template="indico.conf" --destination="$install_dir/.indico.conf"
 ynh_config_add --template=".env" --destination="$install_dir/.env"
 
 #=================================================
@@ -43,6 +43,7 @@ pushd $install_dir
     python3 -m venv $install_dir/venv
     ynh_hide_warnings $install_dir/venv/bin/pip install --upgrade pip setuptools wheel uwsgi
     ynh_hide_warnings $install_dir/venv/bin/pip install indico
+    ynh_hide_warnings $install_dir/venv/bin/pip install python-dotenv
     #indico db prepare
 popd
 
