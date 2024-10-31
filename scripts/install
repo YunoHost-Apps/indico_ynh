@@ -21,7 +21,7 @@ ynh_app_setting_set --key=timezone --value=$timezone
 #=================================================
 ynh_script_progression "Setting up source files..."
 
-mkdir -p "$install_dir"
+mkdir -p "$install_dir/web"
 touch "$install_dir/web/uwsgi.sock" 
 touch "$install_dir/web/uwsgi-stats.sock" 
 
