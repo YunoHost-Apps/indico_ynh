@@ -44,16 +44,10 @@ ynh_config_add --template="../conf/.env" --destination="$install_dir/.env"
 ynh_script_progression "Adding system configurations related to $app..."
 
 pushd $install_dir
-
-python3 -m venv --upgrade-deps --prompt indico "$install_dir/.venv"
-source $install_dir/.venv/bin/activate
-#$install_dir/bin/pip3 install -r "$install_dir/requirements.txt"
-echo 'source $install_dir/.venv/bin/activate' >> ~/.bashrc
-pip install setuptools wheel
-pip install uwsgi
-pip install indico
-indico db prepare
-
+    python3 -m venv $install_dir/venv
+    ynh_hide_warnings $install_dir/venv/bin/pip install --upgrade pip setuptools wheel uwsgi
+    ynh_hide_warnings $install_dir/venv/bin/pip install indico
+    ynh_hide_warnings $install_dir/venv/bin/python3 -m indico db prepare
 popd
 
 # Create a dedicated NGINX config using the conf/nginx.conf template
