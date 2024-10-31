@@ -35,9 +35,9 @@ ynh_config_add --template="indico.conf" --destination="$install_dir/indico.conf"
 ynh_config_add --template=".env" --destination="$install_dir/.env"
 
 #=================================================
-# SYSTEM CONFIGURATION
+# INSTALL PYTHON DEPENDENCIES
 #=================================================
-ynh_script_progression "Adding system configurations related to $app..."
+ynh_script_progression "Installing Python dependencies..."
 
 pushd $install_dir
     python3 -m venv $install_dir/venv
@@ -46,10 +46,18 @@ pushd $install_dir
     ynh_hide_warnings $install_dir/venv/bin/python3 -m indico db prepare
 popd
 
+#=================================================
+# SYSTEM CONFIGURATION
+#=================================================
+ynh_script_progression "Adding system configurations related to $app..."
+
 ynh_config_add_nginx
 
 ynh_add_systemd_config --service="$app-celery" --template="$app-celery.service"
 ynh_add_systemd_config --service="$app-uwsgi" --template="$app-uwsgi.service"
+
+yunohost service add "$app-celery" --description="Celery for indico" --log="/var/log/$app/$app-celery"
+yunohost service add "$app-uwsgi" --description="uwsgi for indico" --log="/var/log/$app/$app-uwsgi"
 
 ynh_config_add_logrotate
 
@@ -58,8 +66,8 @@ ynh_config_add_logrotate
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemctl --service="$app-celery" --action="start"  --description="Celery for indico" --log="/var/log/$app/$app-celery"
-ynh_systemctl --service="$app-uwsgi" --action="start"  --description="uwsgi for indico" --log="/var/log/$app/$app-uwsgi"
+ynh_systemctl --service="$app-celery" --action="start"
+ynh_systemctl --service="$app-uwsgi" --action="start"
 
 #=================================================
 # END OF SCRIPT
