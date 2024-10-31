@@ -71,7 +71,7 @@ ynh_print_info "Backing up the MySQL database..."
 ### (However, things like MySQL dumps *do* take some time to run, though the
 ### copy of the generated dump to the archive still happens later)
 
-ynh_mysql_dump_db > db.sql
+ynh_psql_dump_db > db.sql
 
 #=================================================
 # END OF SCRIPT
