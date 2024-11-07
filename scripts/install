@@ -16,6 +16,11 @@ ynh_app_setting_set --key=admin_mail --value=$admin_mail
 timezone="$(cat /etc/timezone)"
 ynh_app_setting_set --key=timezone --value=$timezone
 
+redis_db=$(ynh_redis_get_free_db)
+celery_db=$(ynh_redis_get_free_db)
+ynh_app_setting_set --app=$app --key=redis_db --value=$redis_db
+ynh_app_setting_set --app=$app --key=celery_db --value=$celery_db
+
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
@@ -35,10 +40,6 @@ ynh_config_add --template="indico.conf" --destination="$install_dir/.indico.conf
 ynh_config_add --template=".env" --destination="$install_dir/.env"
 ynh_config_add --template="logging.yaml" --destination="$install_dir/logging.yaml"
 
-redis_db=$(ynh_redis_get_free_db)
-celery_db=$(ynh_redis_get_free_db)
-ynh_app_setting_set --app=$app --key=redis_db --value=$redis_db
-ynh_app_setting_set --app=$app --key=celery_db --value=$celery_db
 
 #=================================================
 # INSTALL PYTHON DEPENDENCIES
