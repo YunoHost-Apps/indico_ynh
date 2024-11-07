@@ -37,6 +37,8 @@ ynh_config_add --template="logging.yaml" --destination="$install_dir/logging.yam
 
 redis_db=$(ynh_redis_get_free_db)
 celery_db=$(ynh_redis_get_free_db)
+ynh_app_setting_set --app=$app --key=redis_db --value=$redis_db
+ynh_app_setting_set --app=$app --key=celery_db --value=$celery_db
 
 #=================================================
 # INSTALL PYTHON DEPENDENCIES
