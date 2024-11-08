@@ -3,7 +3,7 @@ Description=Indico uWSGI
 After=network.target
 
 [Service]
-ExecStart=__INSTALL_DIR__/venv/bin/uwsgi --ini __INSTALL_DIR__/uwsgi-indico.ini
+ExecStart=__INSTALL_DIR__/.venv/bin/uwsgi --ini __INSTALL_DIR__/uwsgi-indico.ini
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=always
 WorkingDirectory=__INSTALL_DIR__/
