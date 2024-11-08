@@ -51,7 +51,7 @@ ynh_script_progression "Installing Python dependencies..."
 pushd $install_dir
     python3 -m venv  --upgrade-deps --prompt indico $install_dir/.venv
     source "$install_dir/.venv/bin/activate"
-    echo 'source ~/.venv/bin/activate' >> ~/.bashrc
+    echo 'source $install_dir/.venv/bin/activate' >> $install_dir/.bashrc
     ynh_hide_warnings $install_dir/.venv/bin/pip install --upgrade pip setuptools wheel uwsgi
     ynh_hide_warnings $install_dir/.venv/bin/pip install indico
     ynh_hide_warnings $install_dir/.venv/bin/pip install python-dotenv
