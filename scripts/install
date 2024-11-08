@@ -56,6 +56,8 @@ pushd $install_dir
     ynh_hide_warnings $install_dir/.venv/bin/pip install indico
     ynh_hide_warnings $install_dir/.venv/bin/pip install python-dotenv
     ynh_hide_warnings $install_dir/.venv/bin/pip install indico-plugins
+    touch /var/log/$app/$app-celery
+    touch /var/log/$app/$app-uwsgi
     indico db prepare
     indico db --all-plugins upgrade
     touch $install_dir/web/indico.wsgi
