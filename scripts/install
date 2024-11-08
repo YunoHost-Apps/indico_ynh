@@ -54,7 +54,7 @@ pushd $install_dir
     ynh_hide_warnings $install_dir/.venv/bin/pip install python-dotenv
     ynh_hide_warnings $install_dir/.venv/bin/pip install indico-plugins
     ynh_psql_db_shell $db_name <<< "CREATE EXTENSION unaccent; CREATE EXTENSION pg_trgm;"
-    indico db prepare"
+    indico db prepare
     indico db --all-plugins upgrade
     touch $install_dir/web/indico.wsgi
 popd
