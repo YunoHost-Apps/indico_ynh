@@ -52,10 +52,10 @@ pushd $install_dir
     python3 -m venv  --upgrade-deps --prompt indico "$install_dir/.venv" 
     source "$install_dir/.venv/bin/activate"
     echo "source $install_dir/.venv/bin/activate" >> $install_dir/.bashrc
-    ynh_hide_warnings "$install_dir/.venv/bin/pip install --upgrade pip setuptools wheel uwsgi" 
-    ynh_hide_warnings "$install_dir/.venv/bin/pip install indico" 
-    ynh_hide_warnings "$install_dir/.venv/bin/pip install python-dotenv" 
-    ynh_hide_warnings "$install_dir/.venv/bin/pip install indico-plugins" 
+    pip install --upgrade pip setuptools wheel uwsgi
+    pip install indico
+    pip install python-dotenv
+    pip install indico-plugins
     mkdir /var/log/$app
     touch /var/log/$app/$app-celery
     touch /var/log/$app/$app-uwsgi
