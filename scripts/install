@@ -30,11 +30,8 @@ ynh_script_progression "Setting up source files..."
 mkdir -p "$install_dir/web"
 touch "$install_dir/web/uwsgi.sock" 
 touch "$install_dir/web/uwsgi-stats.sock" 
-
-if [ ! -d "/tmp/$app" ]; then
-    mkdir -p /tmp/$app
-fi
-chown $app:$app "/tmp/$app"
+mkdir -p $data_dir/tmp
+chown $app:$app "$data_dir/tmp"
 
 #=================================================
 # APP INITIAL CONFIGURATION
@@ -70,7 +67,7 @@ pushd $install_dir
     indico db --all-plugins upgrade
 popd
 
-chown -R "$app:www-data" "$install_dir" 
+chown -R "$app:$app" "$install_dir" 
 
 #=================================================
 # SYSTEM CONFIGURATION
