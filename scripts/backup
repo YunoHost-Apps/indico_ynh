@@ -23,8 +23,8 @@ ynh_backup "$data_dir"
 
 ynh_backup "/etc/nginx/conf.d/$domain.d/$app.conf"
 
-
-ynh_backup "/etc/systemd/system/$app.service"
+ynh_backup "/etc/systemd/system/$app-celery.service"
+ynh_backup "/etc/systemd/system/$app-uwsgi.service"
 
 ynh_backup "/etc/logrotate.d/$app"
 
