@@ -31,6 +31,7 @@ mkdir -p "$install_dir/web"
 touch "$install_dir/web/uwsgi.sock" 
 touch "$install_dir/web/uwsgi-stats.sock" 
 mkdir "/tmp/__APP__" 2>/dev/null
+chown $app:$app "/tmp/__APP__"
 
 #=================================================
 # APP INITIAL CONFIGURATION
