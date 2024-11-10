@@ -63,7 +63,6 @@ pushd $install_dir
     touch /var/log/$app/$app-uwsgi
     indico db prepare
     indico db --all-plugins upgrade
-    touch $install_dir/web/indico.wsgi
 popd
 
 chown -R "$app:www-data" "$install_dir" 
