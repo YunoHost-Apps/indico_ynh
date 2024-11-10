@@ -30,7 +30,7 @@ ynh_script_progression "Setting up source files..."
 mkdir -p "$install_dir/web"
 touch "$install_dir/web/uwsgi.sock" 
 touch "$install_dir/web/uwsgi-stats.sock" 
-mkdir "/tmp/$app" 2>/dev/null
+mkdir "/tmp/$app" > /dev/null 2>&1
 chown $app:$app "/tmp/$app"
 
 #=================================================
