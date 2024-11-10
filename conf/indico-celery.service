@@ -13,7 +13,7 @@ UMask=0027
 
 KillMode=mixed
 TimeoutStopSec=300
-Environment="CELERYBEAT_SCHEDULE_FILE=/tmp/$app/celerybeat-schedule"
+Environment="CELERYBEAT_SCHEDULE_FILE=__DATA_DIR__/tmp/celerybeat-schedule"
 
 [Install]
 WantedBy=multi-user.target
