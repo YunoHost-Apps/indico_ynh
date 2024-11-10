@@ -56,7 +56,7 @@ pushd $install_dir
     pip install indico
     pip install python-dotenv
     pip install indico-plugins
-    mkdir /var/log/$app
+    #mkdir /var/log/$app
     touch /var/log/$app/$app-celery
     touch /var/log/$app/$app-uwsgi
     indico db prepare
