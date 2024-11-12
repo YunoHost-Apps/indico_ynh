@@ -42,14 +42,8 @@ ynh_config_add --template=".env" --destination="$install_dir/.env"
 #ynh_config_add --template="logging.yaml" --destination="$install_dir/etc/logging.yaml"
 ynh_config_add --template="indico.wsgi" --destination="$install_dir/web/indico.wsgi"
 
-mkdir -p /var/log/$app
-touch /var/log/$app/$app-celery
-touch /var/log/$app/$app-uwsgi
-ln -s $install_dir/etc/indico.conf $install_dir/.indico.conf
-ln -s $install_dir/.venv/lib/python$python_version/site-packages/indico/web/static $install_dir/web/static
-
 chown -R "$app:www-data" "$install_dir" 
-chown -R "$app:www-data" "/var/log/$app" 
+#chown -R "$app:www-data" "/var/log/$app" 
 
 ynh_psql_db_shell $db_name <<< "CREATE EXTENSION unaccent;"
 ynh_psql_db_shell $db_name <<< "CREATE EXTENSION pg_trgm;"
@@ -67,9 +61,14 @@ pushd $install_dir
     pip install indico
     pip install python-dotenv
     pip install indico-plugins
-    indico setup create-logging-config $install_dir/etc
+    mkdir -p /var/log/$app
+    touch /var/log/$app/$app-celery
+    touch /var/log/$app/$app-uwsgi
+    ln -s $install_dir/etc/indico.conf $install_dir/.indico.conf
+    ln -s $install_dir/.venv/lib/python$python_version/site-packages/indico/web/static $install_dir/web/static
     indico db prepare
     indico db --all-plugins upgrade
+    indico setup create-logging-config $install_dir/etc
     indico setup create-symlinks $install_dir
 popd
 
