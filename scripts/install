@@ -42,6 +42,8 @@ ynh_config_add --template=".env" --destination="$install_dir/.env"
 ynh_config_add --template="logging.yaml" --destination="$install_dir/logging.yaml"
 ynh_config_add --template="indico.wsgi" --destination="$install_dir/web/indico.wsgi"
 
+chown -R "$app:www-data" "$install_dir" 
+
 ynh_psql_db_shell $db_name <<< "CREATE EXTENSION unaccent;"
 ynh_psql_db_shell $db_name <<< "CREATE EXTENSION pg_trgm;"
 
@@ -62,7 +64,7 @@ pushd $install_dir
     touch /var/log/$app/$app-celery
     touch /var/log/$app/$app-uwsgi
     ln -s etc/indico.conf .indico.conf
-    ln -s $install_dir/.venv/lib/python3.11/site-packages/indico/web/static $install_dir/web/static
+    ln -s $install_dir/.venv/lib/python$python_version/site-packages/indico/web/static $install_dir/web/static
     indico db prepare
     indico db --all-plugins upgrade
     indico setup create-symlinks $install_dir
