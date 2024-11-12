@@ -49,6 +49,7 @@ ln -s $install_dir/etc/indico.conf $install_dir/.indico.conf
 ln -s $install_dir/.venv/lib/python$python_version/site-packages/indico/web/static $install_dir/web/static
 
 chown -R "$app:www-data" "$install_dir" 
+chown -R "$app:www-data" "/var/log/$app" 
 
 ynh_psql_db_shell $db_name <<< "CREATE EXTENSION unaccent;"
 ynh_psql_db_shell $db_name <<< "CREATE EXTENSION pg_trgm;"
