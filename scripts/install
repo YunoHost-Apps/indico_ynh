@@ -47,7 +47,7 @@ cp $install_dir/.venv/lib/python$python_version/site-packages/indico/logging.yam
 mkdir -p /var/log/$app
 touch /var/log/$app/$app-celery
 touch /var/log/$app/$app-uwsgi
-ln -s etc/indico.conf .indico.conf
+ln -s $install_dir/etc/indico.conf $install_dir/.indico.conf
 ln -s $install_dir/.venv/lib/python$python_version/site-packages/indico/web/static $install_dir/web/static
 
 chown -R "$app:www-data" "$install_dir" 
