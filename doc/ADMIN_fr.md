@@ -1,1 +1,2 @@
-Le dossier d'install de l'app est `__INSTALL_DIR__`
+Après l'installation, ouvrez l'application pour créer un utilisateur administrateur.
+
