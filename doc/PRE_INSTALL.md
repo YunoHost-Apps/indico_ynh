@@ -1,1 +1,2 @@
-This is a dummy disclaimer to display prior to the install
+After installation, open the app to create admin user
+
