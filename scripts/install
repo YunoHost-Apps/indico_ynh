@@ -59,8 +59,8 @@ pushd $install_dir
     pip install python-dotenv
     pip install indico-plugins
     mkdir -p /var/log/$app
-    touch /var/log/$app/$app-celery
-    touch /var/log/$app/$app-uwsgi
+    touch /var/log/$app/$app-celery.log
+    touch /var/log/$app/$app-uwsgi.log
     ln -s etc/indico.conf .indico.conf
     ln -s $install_dir/.venv/lib/python3.11/site-packages/indico/web/static $install_dir/web/static
     indico db prepare
