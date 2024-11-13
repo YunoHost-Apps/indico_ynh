@@ -62,7 +62,7 @@ pushd $install_dir
     touch /var/log/$app/$app-celery.log
     touch /var/log/$app/$app-uwsgi.log
     ln -s etc/indico.conf .indico.conf
-    ln -s $install_dir/.venv/lib/python3.11/site-packages/indico/web/static $install_dir/web/static
+    ln -s $install_dir/.venv/lib/python$python_version/site-packages/indico/web/static $install_dir/web/static
     indico db prepare
     indico db --all-plugins upgrade
     indico setup create-symlinks $install_dir
