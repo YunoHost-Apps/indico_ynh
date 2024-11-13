@@ -11,38 +11,49 @@ ynh_script_progression "Stopping $app's systemd service..."
 ynh_systemctl --service="$app" --action="stop"
 
 #=================================================
-# DOWNLOAD, CHECK AND UNPACK SOURCE
-#=================================================
-ynh_script_progression "Upgrading source files..."
-
-ynh_setup_source --dest_dir="$install_dir" --full_replace --keep=".env data"
-
-chown -R "$app:www-data" "$install_dir"
-
-#=================================================
 # UPDATE A CONFIG FILE
 #=================================================
 ynh_script_progression "Updating $app's configuration files..."
 
-ynh_config_add --template="some_config_file" --destination="$install_dir/some_config_file"
+ynh_config_add --template="uwsgi-indico.ini" --destination="$install_dir/uwsgi-indico.ini"
+ynh_config_add --template="indico.conf" --destination="$install_dir/etc/indico.conf"
+ynh_config_add --template=".env" --destination="$install_dir/.env"
+ynh_config_add --template="logging.yaml" --destination="$install_dir/logging.yaml"
+ynh_config_add --template="indico.wsgi" --destination="$install_dir/web/indico.wsgi"
 
-chmod 400 "$install_dir/some_config_file"
-chown "$app:$app" "$install_dir/some_config_file"
+#=================================================
+# DOWNLOAD, CHECK AND UNPACK SOURCE
+#=================================================
+ynh_script_progression "Upgrading source files..."
+
+pushd $install_dir
+    source "$install_dir/.venv/bin/activate"
+    pip install --upgrade pip setuptools wheel uwsgi
+    pip install -U indico
+    pip install -U python-dotenv
+    pip install -U indico-plugins
+    mkdir -p /var/log/$app
+
+    indico db upgrade
+    indico db --all-plugins upgrade
+    indico setup create-symlinks $install_dir
+    indico setup create-logging-config $install_dir/etc
+popd
+
+chown -R "$app:www-data" "$install_dir"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
 ynh_script_progression "Upgrading system configurations related to $app..."
 
-### This should be a literal copypaste of what happened in the install's "System configuration" section
-
-ynh_config_add_phpfpm
-
 ynh_config_add_nginx
 
-ynh_config_add_systemd
+ynh_config_add_systemd --service="$app-celery" --template="indico-celery.service"
+ynh_config_add_systemd --service="$app-uwsgi" --template="indico-uwsgi.service"
 
-yunohost service add "$app" --description="A short description of the app" --log="/var/log/$app/$app.log"
+yunohost service add "$app-celery" --description="Celery for indico" --log="/var/log/$app/$app-celery"
+yunohost service add "$app-uwsgi" --description="uwsgi for indico" --log="/var/log/$app/$app-uwsgi"
 
 ynh_config_add_logrotate
 
@@ -53,7 +64,8 @@ ynh_config_add_fail2ban --logpath="/var/log/nginx/${domain}-error.log" --failreg
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemctl --service="$app" --action="start"
+ynh_systemctl --service="$app-celery" --action="start"
+ynh_systemctl --service="$app-uwsgi" --action="start"
 
 #=================================================
 # END OF SCRIPT

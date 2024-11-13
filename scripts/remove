@@ -9,12 +9,17 @@ source /usr/share/yunohost/helpers
 ynh_script_progression "Removing system configurations related to $app..."
 
 if ynh_hide_warnings yunohost service status "$app" >/dev/null; then
-    yunohost service remove "$app"
+yunohost service remove "$app-celery"
+yunohost service remove "$app-uwsgi"
 fi
-ynh_config_remove_systemd
+
+ynh_config_remove_systemd "$app-celery" 
+ynh_config_remove_systemd "$app-uwsgi"
 
 ynh_config_remove_nginx
 
+ynh_redis_remove_db "$redis_db"
+ynh_redis_remove_db "$celery_db"
 
 #=================================================
 # END OF SCRIPT

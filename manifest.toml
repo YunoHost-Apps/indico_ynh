@@ -23,10 +23,10 @@ code = "https://github.com/indico/indico"
 yunohost = ">= 11.2.30"
 helpers_version = "2.1"
 architectures = "all"
-multi_instance = true
+multi_instance = false
 
-ldap = "false"
-sso = "false"
+ldap = false
+sso = false
 
 disk = "50M"
 ram.build = "50M"
@@ -36,9 +36,9 @@ ram.runtime = "50M"
     [install.domain]
     type = "domain"
 
-    [install.path]
-    type = "path"
-    default = "/indico"
+#    [install.path]
+#    type = "path"
+#    default = "/indico"
 
     [install.init_main_permission]
     type = "group"
@@ -54,10 +54,10 @@ ram.runtime = "50M"
     [install.admin]
     type = "user"
 
-    [install.password]
-    help.en = "Use the help field to add an information for the admin about this question."
-    help.fr = "Utilisez le champ aide pour ajouter une information à l'intention de l'administrateur à propos de cette question."
-    type = "password"
+#    [install.password]
+#    help.en = "Use the help field to add an information for the admin about this question."
+#    help.fr = "Utilisez le champ aide pour ajouter une information à l'intention de l'administrateur à propos de cette question."
+#    type = "password"
 
 [resources]
 
@@ -81,7 +81,7 @@ ram.runtime = "50M"
     [resources.ports]
 
     [resources.apt]
-    packages = "postgresql, libpq-dev, libxslt1-dev, libxml2-dev, libffi-dev, libpcre3-dev, libyaml-dev, libssl-dev, zlib1g-dev, libbz2-dev, libreadline-dev, libsqlite3-dev, libncurses5-dev, libncursesw5-dev, xz-utils, liblzma-dev, uuid-dev, build-essential, libpango1.0-dev, libjpeg62-turbo-dev, postgresql-contrib, python3-venv, libpq-dev, python3-pip, python3-dev, libpq-dev"
+    packages = "redis-server, postgresql, libpq-dev, libxslt1-dev, libxml2-dev, libffi-dev, libpcre3-dev, libyaml-dev, libssl-dev, zlib1g-dev, libbz2-dev, libreadline-dev, libsqlite3-dev, libncurses5-dev, libncursesw5-dev, xz-utils, liblzma-dev, uuid-dev, build-essential, libpango1.0-dev, libjpeg62-turbo-dev, postgresql-contrib, python3-venv, libpq-dev, python3-pip, python3-dev, libpq-dev"
 
     [resources.database]
     type = "postgresql"
