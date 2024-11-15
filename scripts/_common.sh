@@ -4,7 +4,7 @@
 # COMMON VARIABLES AND CUSTOM HELPERS
 #=================================================
 py_version=3.12.7
-py_vshort=3.12
+py_vshort="${py_version%.*}"
 
 #################################################
 # Function to install a specific Python version #
