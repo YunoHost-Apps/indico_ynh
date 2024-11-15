@@ -25,7 +25,7 @@ install_python() {
     local python_tar="$python_src.tgz"
     local python_url="https://www.python.org/ftp/python/$python_version/$python_tar"
 
-    wget "$python_url" -O "/tmp/$python_tar"
+    wget "$python_url" -O "/tmp/$python_tar" 2>&1
     if [[ $? -ne 0 ]]; then
         echo "Failed to download Python $python_version. Check the version number."
         return 1
@@ -48,7 +48,7 @@ install_python() {
         return 1
     fi
 
-    sudo make altinstall
+    make altinstall
     if [[ $? -ne 0 ]]; then
         echo "Installation failed."
         return 1
@@ -84,15 +84,15 @@ uninstall_python() {
     echo "Uninstalling Python $python_version..."
 
     # Remove binaries
-    sudo rm -f "/usr/local/bin/python${python_version}"
-    sudo rm -f "/usr/local/bin/python${python_version}m"
+     rm -f "/usr/local/bin/python${python_version}"
+     rm -f "/usr/local/bin/python${python_version}m"
 
     # Remove libraries
-    sudo rm -rf "/usr/local/lib/python${python_version}"
-    sudo rm -rf "/usr/local/lib/python${python_version}m"
+     rm -rf "/usr/local/lib/python${python_version}"
+     rm -rf "/usr/local/lib/python${python_version}m"
 
     # Remove from alternatives
-    sudo update-alternatives --remove python3 "/usr/local/bin/python${python_version}" 2>/dev/null
+     update-alternatives --remove python3 "/usr/local/bin/python${python_version}" 2>/dev/null
 
     # Verify uninstallation
     if command -v "python${python_version}" &>/dev/null; then
