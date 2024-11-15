@@ -55,7 +55,7 @@ install_python $py_version
 ynh_script_progression "Installing Python dependencies..."
 
 pushd $install_dir
-    /usr/local/bin/python3.12 -m venv  --upgrade-deps --prompt indico "$install_dir/.venv" 
+    /usr/local/bin/python$py_vshort -m venv  --upgrade-deps --prompt indico "$install_dir/.venv" 
     source "$install_dir/.venv/bin/activate"
     echo "source $install_dir/.venv/bin/activate" >> $install_dir/.bashrc
     python --version
