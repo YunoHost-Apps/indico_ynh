@@ -36,19 +36,19 @@ install_python() {
     cd "$python_src" || return 1
 
     # Compile and install Python
-    ./configure --enable-optimizations
+    ./configure --enable-optimizations 2>&1 
     if [[ $? -ne 0 ]]; then
         echo "Configuration failed."
         return 1
     fi
 
-    make -j$(nproc)
+    make -j$(nproc) 2>&1
     if [[ $? -ne 0 ]]; then
         echo "Build failed."
         return 1
     fi
 
-    make altinstall
+    make altinstall 2>&1
     if [[ $? -ne 0 ]]; then
         echo "Installation failed."
         return 1
