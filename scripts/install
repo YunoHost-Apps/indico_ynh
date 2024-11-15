@@ -67,7 +67,8 @@ pushd $install_dir
     touch /var/log/$app/$app-celery.log
     touch /var/log/$app/$app-uwsgi.log
     ln -s etc/indico.conf .indico.conf
-#    ln -s $install_dir/.venv/lib/python$python_version/site-packages/indico/web/static $install_dir/web/static
+# I don't know why, but without this symlink the install produces a site without styles
+    ln -s $install_dir/.venv/lib/python$py_vshort/site-packages/indico/web/static $install_dir/web/static
     indico setup create-symlinks $install_dir
     indico setup create-logging-config $install_dir/etc
     indico db prepare
