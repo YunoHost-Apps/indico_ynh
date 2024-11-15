@@ -4,8 +4,12 @@
 # COMMON VARIABLES AND CUSTOM HELPERS
 #=================================================
 py_version=3.12.7
+py_vshort="${py_version%.*}"
 
-# Function to install a specific Python version
+#################################################
+# Function to install a specific Python version #
+#################################################
+
 install_python() {
     local python_version=$1
 
@@ -21,7 +25,7 @@ install_python() {
     local python_tar="$python_src.tgz"
     local python_url="https://www.python.org/ftp/python/$python_version/$python_tar"
 
-    wget "$python_url" -O "/tmp/$python_tar"
+    wget "$python_url" -O "/tmp/$python_tar" 2>&1
     if [[ $? -ne 0 ]]; then
         echo "Failed to download Python $python_version. Check the version number."
         return 1
@@ -32,19 +36,19 @@ install_python() {
     cd "$python_src" || return 1
 
     # Compile and install Python
-    ./configure --enable-optimizations
+    ./configure --enable-optimizations 2>&1 
     if [[ $? -ne 0 ]]; then
         echo "Configuration failed."
         return 1
     fi
 
-    make -j$(nproc)
+    make -j$(nproc) 2>&1
     if [[ $? -ne 0 ]]; then
         echo "Build failed."
         return 1
     fi
 
-    sudo make altinstall
+    make altinstall 2>&1
     if [[ $? -ne 0 ]]; then
         echo "Installation failed."
         return 1
@@ -65,3 +69,39 @@ install_python() {
 
 # Example usage
 # install_python 3.12.7
+
+###################################################
+# Function to uninstall a specific Python version #
+###################################################
+uninstall_python() {
+    local python_version=$1
+
+    if [[ -z "$python_version" ]]; then
+        echo "Usage: uninstall_python <version>"
+        return 1
+    fi
+
+    echo "Uninstalling Python $python_version..."
+
+    # Remove binaries
+     rm -f "/usr/local/bin/python${python_version}"
+     rm -f "/usr/local/bin/python${python_version}m"
+
+    # Remove libraries
+     rm -rf "/usr/local/lib/python${python_version}"
+     rm -rf "/usr/local/lib/python${python_version}m"
+
+    # Remove from alternatives
+     update-alternatives --remove python3 "/usr/local/bin/python${python_version}" 2>/dev/null
+
+    # Verify uninstallation
+    if command -v "python${python_version}" &>/dev/null; then
+        echo "Python $python_version was not completely removed."
+        return 1
+    else
+        echo "Python $python_version uninstalled successfully."
+    fi
+}
+
+# Example usage:
+# uninstall_python 3.12
