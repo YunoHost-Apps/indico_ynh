@@ -48,12 +48,17 @@ ynh_psql_db_shell $db_name <<< "CREATE EXTENSION pg_trgm;"
 #=================================================
 # INSTALL PYTHON DEPENDENCIES
 #=================================================
+ynh_script_progression "Installing Python 3.12.7..."
+
+install_python $py_version
+
 ynh_script_progression "Installing Python dependencies..."
 
 pushd $install_dir
-    python3 -m venv  --upgrade-deps --prompt indico "$install_dir/.venv" 
+    /usr/local/bin/python3.12 -m venv  --upgrade-deps --prompt indico "$install_dir/.venv" 
     source "$install_dir/.venv/bin/activate"
     echo "source $install_dir/.venv/bin/activate" >> $install_dir/.bashrc
+    python --version
     pip install --upgrade pip setuptools wheel uwsgi
     pip install indico
     pip install python-dotenv
@@ -62,11 +67,12 @@ pushd $install_dir
     touch /var/log/$app/$app-celery.log
     touch /var/log/$app/$app-uwsgi.log
     ln -s etc/indico.conf .indico.conf
-    ln -s $install_dir/.venv/lib/python$python_version/site-packages/indico/web/static $install_dir/web/static
-    indico db prepare
-    indico db --all-plugins upgrade
+#    ln -s $install_dir/.venv/lib/python$python_version/site-packages/indico/web/static $install_dir/web/static
     indico setup create-symlinks $install_dir
     indico setup create-logging-config $install_dir/etc
+    indico db prepare
+    indico db --all-plugins upgrade
+
 popd
 
 chown -R "$app:www-data" "$install_dir" 
