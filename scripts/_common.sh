@@ -16,12 +16,6 @@ install_python() {
 
     echo "Installing Python $python_version..."
 
-    # Install prerequisites
-    sudo apt update
-    sudo apt install -y software-properties-common build-essential \
-        zlib1g-dev libffi-dev libssl-dev libbz2-dev libreadline-dev \
-        libsqlite3-dev liblzma-dev wget
-
     # Download and extract Python source
     local python_src="Python-$python_version"
     local python_tar="$python_src.tgz"
