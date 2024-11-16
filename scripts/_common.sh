@@ -105,3 +105,23 @@ uninstall_python() {
 
 # Example usage:
 # uninstall_python 3.12
+
+############################################
+# Check if Python $py_version is installed #
+############################################
+
+check_python() {
+if command -v python$py_vshort &>/dev/null; then
+    # Verify the version
+    installed_version=$(python$py_vshort --version 2>/dev/null)
+    if [[ $installed_version == "Python $py_version" ]]; then
+        echo "Python $py_version is already installed."
+    else
+        echo "Python $py_vshort is installed but not version $py_version."
+        install_python $py_version
+    fi
+else
+    echo "Python $py_version is not installed."
+    install_python $py_version
+fi
+}
