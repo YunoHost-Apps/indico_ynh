@@ -30,6 +30,11 @@ ynh_restore "$data_dir"
 
 chown -R "$app:www-data" "$data_dir"
 
+# Required for celery to run
+    mkdir -p /var/log/$app
+    touch /var/log/$app/$app-celery.log
+    touch /var/log/$app/$app-uwsgi.log
+
 #=================================================
 # RESTORE THE MYSQL DATABASE
 #=================================================
