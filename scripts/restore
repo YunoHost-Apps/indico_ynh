@@ -6,7 +6,7 @@ source /usr/share/yunohost/helpers
 #=================================================
 # RESTORE THE APP MAIN DIR
 #=================================================
-ynh_script_progression "ReInstalling Python 3.12.7..."
+ynh_script_progression "ReInstalling Python $py_version..."
 
 install_python $py_version
 
