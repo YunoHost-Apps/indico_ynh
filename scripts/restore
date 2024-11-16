@@ -34,6 +34,7 @@ chown -R "$app:www-data" "$data_dir"
     mkdir -p /var/log/$app
     touch /var/log/$app/$app-celery.log
     touch /var/log/$app/$app-uwsgi.log
+    chown -R "$app:www-data" "/var/log/$app" 
 
 #=================================================
 # RESTORE THE MYSQL DATABASE
