@@ -54,8 +54,6 @@ yunohost service add "$app-uwsgi" --description="uwsgi for indico" --log="/var/l
 
 ynh_config_add_logrotate
 
-ynh_config_add_fail2ban --logpath="/var/log/nginx/${domain}-error.log" --failregex="Regex to match into the log for a failed login"
-
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
