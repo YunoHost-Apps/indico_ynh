@@ -27,7 +27,7 @@ ynh_config_add --template="indico.wsgi" --destination="$install_dir/web/indico.w
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-
+check_python
 
 pushd $install_dir
     /usr/local/bin/python$py_vshort -m venv  --upgrade-deps --prompt indico "$install_dir/.venv" 
