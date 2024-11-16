@@ -69,10 +69,10 @@ pushd $install_dir
     ln -s etc/indico.conf .indico.conf
 # I don't know why, but without this symlink the install produces a site without styles
     ln -s $install_dir/.venv/lib/python$py_vshort/site-packages/indico/web/static $install_dir/web/static
-    indico setup create-symlinks $install_dir
-    indico setup create-logging-config $install_dir/etc
-    indico db prepare
-    indico db --all-plugins upgrade
+    indico setup create-symlinks $install_dir  2>&1
+    indico setup create-logging-config $install_dir/etc  2>&1
+    indico db prepare  2>&1
+    indico db --all-plugins upgrade  2>&1
 popd
 
 chown -R "$app:www-data" "$install_dir" 
