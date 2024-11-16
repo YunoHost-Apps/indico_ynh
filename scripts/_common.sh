@@ -64,7 +64,7 @@ install_python() {
 
     # Clean up
     cd ..
-    rm -rf "/tmp/$python_src" "/tmp/$python_tar"
+    ynh_secure_remove "/tmp/$python_src" "/tmp/$python_tar"
 }
 
 # Example usage
@@ -84,12 +84,12 @@ uninstall_python() {
     echo "Uninstalling Python $python_version..."
 
     # Remove binaries
-     rm -f "/usr/local/bin/python${python_version}"
-     rm -f "/usr/local/bin/python${python_version}m"
+     ynh_secure_remove "/usr/local/bin/python${python_version}"
+     ynh_secure_remove "/usr/local/bin/python${python_version}m"
 
     # Remove libraries
-     rm -rf "/usr/local/lib/python${python_version}"
-     rm -rf "/usr/local/lib/python${python_version}m"
+     ynh_secure_remove "/usr/local/lib/python${python_version}"
+     ynh_secure_remove "/usr/local/lib/python${python_version}m"
 
     # Remove from alternatives
      update-alternatives --remove python3 "/usr/local/bin/python${python_version}" 2>/dev/null
