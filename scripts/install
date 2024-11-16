@@ -48,7 +48,7 @@ ynh_psql_db_shell $db_name <<< "CREATE EXTENSION pg_trgm;"
 #=================================================
 # INSTALL PYTHON DEPENDENCIES
 #=================================================
-ynh_script_progression "Installing Python 3.12.7..."
+ynh_script_progression "Installing Python $py_version..."
 
 install_python $py_version
 
