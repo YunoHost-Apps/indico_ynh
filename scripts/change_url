@@ -16,7 +16,8 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression "Stopping $app's systemd service..."
 
-ynh_systemctl --service="$app" --action="stop"
+ynh_systemctl --service="$app-celery" --action="stop"
+ynh_systemctl --service="$app-uwsgi" --action="stop"
 
 #=================================================
 # MODIFY URL IN NGINX CONF
@@ -31,13 +32,15 @@ ynh_config_change_url_nginx
 #=================================================
 
 ## do any changes to files that reference specific installation domain/path, i.e. regenerate configs etc
+ynh_config_add --template="indico.conf" --destination="$install_dir/etc/indico.conf"
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemctl --service="$app" --action="start"
+ynh_systemctl --service="$app-celery" --action="start"
+ynh_systemctl --service="$app-uwsgi" --action="start"
 
 #=================================================
 # END OF SCRIPT
