@@ -76,6 +76,7 @@ install_python() {
 ###################################################
 uninstall_python() {
     local python_version=$1
+    local py_vshort="${py_version%.*}" 
 
     if [[ -z "$python_version" ]]; then
         echo "Usage: uninstall_python <version>"
@@ -85,15 +86,13 @@ uninstall_python() {
     echo "Uninstalling Python $python_version..."
 
     # Remove binaries
-     ynh_safe_rm "/usr/local/bin/python${python_version}"
-     ynh_safe_rm "/usr/local/bin/python${python_version}m"
+     ynh_safe_rm "/usr/local/bin/python${py_vshort}"
 
     # Remove libraries
-     ynh_safe_rm "/usr/local/lib/python${python_version}"
-     ynh_safe_rm "/usr/local/lib/python${python_version}m"
-
+     ynh_safe_rm "/usr/local/lib/python${py_vshort}"
+     
     # Remove from alternatives
-     update-alternatives --remove python3 "/usr/local/bin/python${python_version}" 2>/dev/null
+     update-alternatives --remove python3 "/usr/local/bin/python${py_vshort}" 2>/dev/null
 
     # Verify uninstallation
     if command -v "python${python_version}" &>/dev/null; then
