@@ -8,7 +8,8 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression "Stopping $app's systemd service..."
 
-ynh_systemctl --service="$app" --action="stop"
+ynh_systemctl --service="$app-celery" --action="stop"
+ynh_systemctl --service="$app-uwsgi" --action="stop"
 
 #=================================================
 # UPDATE A CONFIG FILE
@@ -26,18 +27,14 @@ ynh_config_add --template="indico.wsgi" --destination="$install_dir/web/indico.w
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
+check_python
+
 pushd $install_dir
     source "$install_dir/.venv/bin/activate"
-    pip install --upgrade pip setuptools wheel uwsgi
-    pip install -U indico
-    pip install -U python-dotenv
-    pip install -U indico-plugins
-    mkdir -p /var/log/$app
-
-    indico db upgrade
-    indico db --all-plugins upgrade
-    indico setup create-symlinks $install_dir
-    indico setup create-logging-config $install_dir/etc
+    pip install -U indico 2>&1
+    pip install -U indico-plugins 2>&1
+    indico db upgrade 2>&1
+    indico db --all-plugins upgrade 2>&1
 popd
 
 chown -R "$app:www-data" "$install_dir"
@@ -56,8 +53,6 @@ yunohost service add "$app-celery" --description="Celery for indico" --log="/var
 yunohost service add "$app-uwsgi" --description="uwsgi for indico" --log="/var/log/$app/$app-uwsgi"
 
 ynh_config_add_logrotate
-
-ynh_config_add_fail2ban --logpath="/var/log/nginx/${domain}-error.log" --failregex="Regex to match into the log for a failed login"
 
 #=================================================
 # START SYSTEMD SERVICE

@@ -6,6 +6,15 @@ source /usr/share/yunohost/helpers
 #=================================================
 # RESTORE THE APP MAIN DIR
 #=================================================
+ynh_script_progression "ReInstalling Python $py_version..."
+
+# Store current path
+current_path=$(pwd)
+# Install python (I will look for a way to backup and restore python instead of compiling it everytime)
+install_python $py_version
+# Go back to previous path
+cd $current_path
+
 ynh_script_progression "Restoring the app main directory..."
 
 ynh_restore "$install_dir"
@@ -20,6 +29,12 @@ ynh_script_progression "Restoring the data directory..."
 ynh_restore "$data_dir"
 
 chown -R "$app:www-data" "$data_dir"
+
+# Required for celery to run
+    mkdir -p /var/log/$app
+    touch /var/log/$app/$app-celery.log
+    touch /var/log/$app/$app-uwsgi.log
+    chown -R "$app:www-data" "/var/log/$app" 
 
 #=================================================
 # RESTORE THE MYSQL DATABASE
@@ -51,7 +66,8 @@ ynh_restore "/etc/logrotate.d/$app"
 #=================================================
 ynh_script_progression "Reloading NGINX web server and $app's service..."
 
-ynh_systemctl --service="$app" --action="start"
+ynh_systemctl --service="$app-celery" --action="start"
+ynh_systemctl --service="$app-uwsgi" --action="start"
 
 ynh_systemctl --service=nginx --action=reload
 
