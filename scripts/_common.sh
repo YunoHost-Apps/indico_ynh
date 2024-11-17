@@ -64,7 +64,8 @@ install_python() {
 
     # Clean up
     cd ..
-    ynh_safe_rm "/tmp/$python_src" "/tmp/$python_tar"
+    ynh_safe_rm "/tmp/$python_src" 
+    ynh_safe_rm "/tmp/$python_tar"
 }
 
 # Example usage
