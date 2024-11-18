@@ -1,1 +1,2 @@
-Ceci est un faux disclaimer à présenter avant l'installation
+Après l'installation, ouvrez l'application pour créer un utilisateur administrateur.
+

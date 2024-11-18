@@ -1,3 +1,2 @@
-Ceci est une fausse doc d'admin pour cette app
+Après l'installation, ouvrez l'application pour créer un utilisateur administrateur.
 
-Le dossier d'install de l'app est `__INSTALL_DIR__`

@@ -1,3 +1,2 @@
-This is a dummy admin doc for this app
+After installation, open the app to create admin user
 
-The app install dir is `__INSTALL_DIR__`

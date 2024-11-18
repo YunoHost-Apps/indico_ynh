@@ -1,64 +1,79 @@
-# Aplikazio bat paketatzen, honako adibidea oinarritzat hartuz
-
-- Kopiatu aplikazio hau aldaketak egin baino lehen, Github gordailuko ['Erabili txantiloi hau'](https://github.com/new?template_name=example_ynh&template_owner=YunoHost) botoia erabiliz
-- Editatu `manifest.toml` aplikazioaren informazio zehatzarekin
-- Editatu `install`, `upgrade`, `remove`, `backup` eta `restore` scriptak, eta konfigurazio fitxategiak `conf/` direktorioan, beharrezkoak badira
-  - Erabili [scripten laguntza-dokumentazioa](https://yunohost.org/packaging_apps_helpers)
-- Editatu `change_url` eta `config` scriptak ere, edo kendu ez badute inolako betekizunik
-- Gehitu `LICENSE` fitxategia paketerako.
-  - Ohart ongi: `LICENSE` fitxategiak ez du zertan jatorrizko aplikazioaren lizentzia bera izan: pakete honen kodeak izatea nahi duzun lizentzia baino ez da eta aske zara berau aukeratzeko! (Ez badakizu zein aukeratu, guk [AGPL-3](https://www.gnu.org/licenses/agpl-3.0.txt) gomendatzen dugu)
-- Editatu `doc/` direktorioko fitxategiak ([ikus paketeak dokumentatzeari buruzko orria](https://yunohost.org/packaging_app_doc))
-- `README.md` fitxategiak automatikoki sortuko dira <https://github.com/YunoHost/apps/tree/master/tools/readme_generator>ri esker
-
----
 <!--
 Ohart ongi: README hau automatikoki sortu da <https://github.com/YunoHost/apps/tree/master/tools/readme_generator>ri esker
 EZ editatu eskuz.
 -->
 
-# Example app YunoHost-erako
+# Indico YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/example.svg)](https://ci-apps.yunohost.org/ci/apps/example/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/example.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/example.maintain.svg)
+[![Integrazio maila](https://dash.yunohost.org/integration/indico.svg)](https://ci-apps.yunohost.org/ci/apps/indico/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/indico.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/indico.maintain.svg)
 
-[![Instalatu Example app YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=example)
+[![Instalatu Indico YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=indico)
 
 *[Irakurri README hau beste hizkuntzatan.](./ALL_README.md)*
 
-> *Pakete honek Example app YunoHost zerbitzari batean azkar eta zailtasunik gabe instalatzea ahalbidetzen dizu.*  
+> *Pakete honek Indico YunoHost zerbitzari batean azkar eta zailtasunik gabe instalatzea ahalbidetzen dizu.*  
 > *YunoHost ez baduzu, kontsultatu [gida](https://yunohost.org/install) nola instalatu ikasteko.*
 
 ## Aurreikuspena
 
-This is a dummy description of this app features
+# Indico 
+
+<img src="https://github.com/indico/indico/raw/master/indico/web/static/images/logo_indico.png"
+     align="right"
+     width="300"
+     style="width: 300px; float: right; margin-right: 50px;">
+
+**Indico** is:
+ * 🗓 a general-purpose **event management** tool;
+ * 🌍 fully **web-based**;
+ * 🧩 **feature-rich** but also **extensible** through the use of [plugins](https://docs.getindico.io/en/stable/plugins/);
+ * ⚖️ **Open-Source** Software under the MIT License;
+ * <img src="https://raw.githubusercontent.com/indico/assets/master/cern_badge.png" width="20"> **made at CERN**, [the place where the web was born](https://home.cern/science/computing/birth-web)!
+
+## What does it do?
+Indico's **main features** are:
+ * a powerful and flexible **hierarchical content management** system for events;
+ * a full-blown **conference organization workflow** with:
+   - 📢 **Call for Abstracts** and **abstract reviewing** modules;
+   - 📝 flexible **registration form** creation and configuration;
+   - 💰 integration with existing **payment systems**;
+   - ✅ a **paper reviewing** workflow;
+   - 🗓 a **drag and drop timetable management interface**;
+   - 🎫 a simple **badge editor** with the possibility to print badges and tickets for participants;
+ * tools for **meeting management** and archival of presentation materials;
+ * a powerful **room booking** interface;
+ * integration with existing **video conferencing solutions**;
+
+A more detailed list [can be found here](https://getindico.io/features/). There is also a [video](https://www.youtube.com/watch?v=yo8rgg9dOcc)!
 
 
-**Paketatutako bertsioa:** 1.0~ynh1
+**Paketatutako bertsioa:** 3.3.4~ynh1
 
-**Demoa:** <https://demo.example.com>
+**Demoa:** <https://sandbox.getindico.io/>
 
 ## Pantaila-argazkiak
 
-![Example app(r)en pantaila-argazkia](./doc/screenshots/example.jpg)
+![Indico(r)en pantaila-argazkia](./doc/screenshots/sneakpeek.gif)
 
 ## Dokumentazioa eta baliabideak
 
-- Aplikazioaren webgune ofiziala: <https://example.com>
-- Erabiltzaileen dokumentazio ofiziala: <https://yunohost.org/apps>
-- Administratzaileen dokumentazio ofiziala: <https://yunohost.org/packaging_apps>
-- Jatorrizko aplikazioaren kode-gordailua: <https://some.forge.com/example/example>
-- YunoHost Denda: <https://apps.yunohost.org/app/example>
-- Eman errore baten berri: <https://github.com/YunoHost-Apps/example_ynh/issues>
+- Aplikazioaren webgune ofiziala: <https://getindico.io/>
+- Erabiltzaileen dokumentazio ofiziala: <https://learn.getindico.io/>
+- Administratzaileen dokumentazio ofiziala: <https://docs.getindico.io/en>
+- Jatorrizko aplikazioaren kode-gordailua: <https://github.com/indico/indico>
+- YunoHost Denda: <https://apps.yunohost.org/app/indico>
+- Eman errore baten berri: <https://github.com/YunoHost-Apps/indico_ynh/issues>
 
 ## Garatzaileentzako informazioa
 
-Bidali `pull request`a [`testing` abarrera](https://github.com/YunoHost-Apps/example_ynh/tree/testing).
+Bidali `pull request`a [`testing` abarrera](https://github.com/YunoHost-Apps/indico_ynh/tree/testing).
 
 `testing` abarra probatzeko, ondorengoa egin:
 
 ```bash
-sudo yunohost app install https://github.com/YunoHost-Apps/example_ynh/tree/testing --debug
+sudo yunohost app install https://github.com/YunoHost-Apps/indico_ynh/tree/testing --debug
 edo
-sudo yunohost app upgrade example -u https://github.com/YunoHost-Apps/example_ynh/tree/testing --debug
+sudo yunohost app upgrade indico -u https://github.com/YunoHost-Apps/indico_ynh/tree/testing --debug
 ```
 
 **Informazio gehiago aplikazioaren paketatzeari buruz:** <https://yunohost.org/packaging_apps>
