@@ -5,7 +5,9 @@
 
 # Indico для YunoHost
 
-[![Уровень интеграции](https://dash.yunohost.org/integration/indico.svg)](https://ci-apps.yunohost.org/ci/apps/indico/) ![Состояние работы](https://ci-apps.yunohost.org/ci/badges/indico.status.svg) ![Состояние сопровождения](https://ci-apps.yunohost.org/ci/badges/indico.maintain.svg)
+[![Уровень интеграции](https://apps.yunohost.org/badge/integration/indico)](https://ci-apps.yunohost.org/ci/apps/indico/)
+![Состояние работы](https://apps.yunohost.org/badge/state/indico)
+![Состояние сопровождения](https://apps.yunohost.org/badge/maintained/indico)
 
 [![Установите Indico с YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=indico)
 

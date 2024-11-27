@@ -1,22 +1,22 @@
 <!--
-NOTA: Este README foi creado automáticamente por <https://github.com/YunoHost/apps/tree/master/tools/readme_generator>
-NON debe editarse manualmente.
+To README zostało automatycznie wygenerowane przez <https://github.com/YunoHost/apps/tree/master/tools/readme_generator>
+Nie powinno być ono edytowane ręcznie.
 -->
 
-# Indico para YunoHost
+# Indico dla YunoHost
 
-[![Nivel de integración](https://apps.yunohost.org/badge/integration/indico)](https://ci-apps.yunohost.org/ci/apps/indico/)
-![Estado de funcionamento](https://apps.yunohost.org/badge/state/indico)
-![Estado de mantemento](https://apps.yunohost.org/badge/maintained/indico)
+[![Poziom integracji](https://apps.yunohost.org/badge/integration/indico)](https://ci-apps.yunohost.org/ci/apps/indico/)
+![Status działania](https://apps.yunohost.org/badge/state/indico)
+![Status utrzymania](https://apps.yunohost.org/badge/maintained/indico)
 
-[![Instalar Indico con YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=indico)
+[![Zainstaluj Indico z YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=indico)
 
-*[Le este README en outros idiomas.](./ALL_README.md)*
+*[Przeczytaj plik README w innym języku.](./ALL_README.md)*
 
-> *Este paquete permíteche instalar Indico de xeito rápido e doado nun servidor YunoHost.*  
-> *Se non usas YunoHost, le a [documentación](https://yunohost.org/install) para saber como instalalo.*
+> *Ta aplikacja pozwala na szybką i prostą instalację Indico na serwerze YunoHost.*  
+> *Jeżeli nie masz YunoHost zapoznaj się z [poradnikiem](https://yunohost.org/install) instalacji.*
 
-## Vista xeral
+## Przegląd
 
 # Indico 
 
@@ -49,33 +49,33 @@ Indico's **main features** are:
 A more detailed list [can be found here](https://getindico.io/features/). There is also a [video](https://www.youtube.com/watch?v=yo8rgg9dOcc)!
 
 
-**Versión proporcionada:** 3.3.4~ynh1
+**Dostarczona wersja:** 3.3.4~ynh1
 
 **Demo:** <https://sandbox.getindico.io/>
 
-## Capturas de pantalla
+## Zrzuty ekranu
 
-![Captura de pantalla de Indico](./doc/screenshots/sneakpeek.gif)
+![Zrzut ekranu z Indico](./doc/screenshots/sneakpeek.gif)
 
-## Documentación e recursos
+## Dokumentacja i zasoby
 
-- Web oficial da app: <https://getindico.io/>
-- Documentación oficial para usuarias: <https://learn.getindico.io/>
-- Documentación oficial para admin: <https://docs.getindico.io/en>
-- Repositorio de orixe do código: <https://github.com/indico/indico>
-- Tenda YunoHost: <https://apps.yunohost.org/app/indico>
-- Informar dun problema: <https://github.com/YunoHost-Apps/indico_ynh/issues>
+- Oficjalna strona aplikacji: <https://getindico.io/>
+- Oficjalna dokumentacja: <https://learn.getindico.io/>
+- Oficjalna dokumentacja dla administratora: <https://docs.getindico.io/en>
+- Repozytorium z kodem źródłowym: <https://github.com/indico/indico>
+- Sklep YunoHost: <https://apps.yunohost.org/app/indico>
+- Zgłaszanie błędów: <https://github.com/YunoHost-Apps/indico_ynh/issues>
 
-## Info de desenvolvemento
+## Informacje od twórców
 
-Envía a túa colaboración á [rama `testing`](https://github.com/YunoHost-Apps/indico_ynh/tree/testing).
+Wyślij swój pull request do [gałęzi `testing`](https://github.com/YunoHost-Apps/indico_ynh/tree/testing).
 
-Para probar a rama `testing`, procede deste xeito:
+Aby wypróbować gałąź `testing` postępuj zgodnie z instrukcjami:
 
 ```bash
 sudo yunohost app install https://github.com/YunoHost-Apps/indico_ynh/tree/testing --debug
-ou
+lub
 sudo yunohost app upgrade indico -u https://github.com/YunoHost-Apps/indico_ynh/tree/testing --debug
 ```
 
-**Máis info sobre o empaquetado da app:** <https://yunohost.org/packaging_apps>
+**Więcej informacji o tworzeniu paczek aplikacji:** <https://yunohost.org/packaging_apps>

@@ -5,7 +5,9 @@ EZ editatu eskuz.
 
 # Indico YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/indico.svg)](https://ci-apps.yunohost.org/ci/apps/indico/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/indico.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/indico.maintain.svg)
+[![Integrazio maila](https://apps.yunohost.org/badge/integration/indico)](https://ci-apps.yunohost.org/ci/apps/indico/)
+![Funtzionamendu egoera](https://apps.yunohost.org/badge/state/indico)
+![Mantentze egoera](https://apps.yunohost.org/badge/maintained/indico)
 
 [![Instalatu Indico YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=indico)
 

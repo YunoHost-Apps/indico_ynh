@@ -5,7 +5,9 @@ No se debe editar a mano.
 
 # Indico para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/indico.svg)](https://ci-apps.yunohost.org/ci/apps/indico/) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/indico.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/indico.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/indico)](https://ci-apps.yunohost.org/ci/apps/indico/)
+![Estado funcional](https://apps.yunohost.org/badge/state/indico)
+![Estado En Mantención](https://apps.yunohost.org/badge/maintained/indico)
 
 [![Instalar Indico con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=indico)
 

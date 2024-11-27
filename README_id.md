@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # Indico untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/indico.svg)](https://ci-apps.yunohost.org/ci/apps/indico/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/indico.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/indico.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/indico)](https://ci-apps.yunohost.org/ci/apps/indico/)
+![Status kerja](https://apps.yunohost.org/badge/state/indico)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/indico)
 
 [![Pasang Indico dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=indico)
 
