@@ -55,7 +55,8 @@ test_format = 1.0
 
     # args.language = "fr_FR"
     # args.multisite = 0
-
+    args.logourl = "https://upload.wikimedia.org/wikipedia/commons/1/1e/YunoHost_logo.png" 
+    
     # -------------------------------
     # Commits to test upgrade from
     # -------------------------------
