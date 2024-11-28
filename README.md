@@ -5,7 +5,9 @@ It shall NOT be edited by hand.
 
 # Indico for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/indico.svg)](https://ci-apps.yunohost.org/ci/apps/indico/) ![Working status](https://ci-apps.yunohost.org/ci/badges/indico.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/indico.maintain.svg)
+[![Integration level](https://apps.yunohost.org/badge/integration/indico)](https://ci-apps.yunohost.org/ci/apps/indico/)
+![Working status](https://apps.yunohost.org/badge/state/indico)
+![Maintenance status](https://apps.yunohost.org/badge/maintained/indico)
 
 [![Install Indico with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=indico)
 
@@ -47,7 +49,7 @@ Indico's **main features** are:
 A more detailed list [can be found here](https://getindico.io/features/). There is also a [video](https://www.youtube.com/watch?v=yo8rgg9dOcc)!
 
 
-**Shipped version:** 3.3.4~ynh1
+**Shipped version:** 3.3.4~ynh2
 
 **Demo:** <https://sandbox.getindico.io/>
 

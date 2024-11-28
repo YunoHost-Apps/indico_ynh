@@ -24,6 +24,8 @@ celery_db=$(ynh_redis_get_free_db)
 ynh_app_setting_set --app=$app --key=celery_db --value=$celery_db
 redis_unlock "redis_db"
 
+ynh_app_setting_set --key=logourl --value=$logourl
+
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================

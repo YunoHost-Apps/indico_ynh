@@ -7,7 +7,7 @@ name = "Indico"
 description.en = "Feature-rich event management system"
 description.fr = "Système de gestion d'événements riche en fonctionnalités"
 
-version = "3.3.4~ynh1"
+version = "3.3.4~ynh2"
 
 maintainers = ["DeMiro5001"]
 
@@ -53,6 +53,11 @@ ram.runtime = "50M"
 
     [install.admin]
     type = "user"
+
+    [install.logourl]
+    ask.en = "Input the logo url"
+    ask.fr = "Saisissez l'url du logo"
+    type = "url"
 
 #    [install.password]
 #    help.en = "Use the help field to add an information for the admin about this question."
