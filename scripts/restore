@@ -8,7 +8,7 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression "Restoring the data directory..."
 
-# data_dir needs to be restored before the app otherwise otherwise the restore fails
+# data_dir needs to be restored before the app otherwise the restore fails
 ynh_restore "$data_dir"
 
 chown -R "$app:www-data" "$data_dir"
