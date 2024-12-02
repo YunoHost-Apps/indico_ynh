@@ -49,7 +49,7 @@ Indico's **main features** are:
 A more detailed list [can be found here](https://getindico.io/features/). There is also a [video](https://www.youtube.com/watch?v=yo8rgg9dOcc)!
 
 
-**Paketatutako bertsioa:** 3.3.4~ynh2
+**Paketatutako bertsioa:** 3.3.5~ynh1
 
 **Demoa:** <https://sandbox.getindico.io/>
 
