@@ -49,7 +49,7 @@ Indico's **main features** are:
 A more detailed list [can be found here](https://getindico.io/features/). There is also a [video](https://www.youtube.com/watch?v=yo8rgg9dOcc)!
 
 
-**分发版本：** 3.3.4~ynh2
+**分发版本：** 3.3.5~ynh1
 
 **演示：** <https://sandbox.getindico.io/>
 
