@@ -16,6 +16,8 @@ ynh_systemctl --service="$app-uwsgi" --action="stop"
 #=================================================
 ynh_script_progression "Updating $app's configuration files..."
 
+logourl=$(ynh_app_setting_get --key=logourl)
+
 ynh_config_add --template="uwsgi-indico.ini" --destination="$install_dir/uwsgi-indico.ini"
 ynh_config_add --template="indico.conf" --destination="$install_dir/etc/indico.conf"
 ynh_config_add --template=".env" --destination="$install_dir/.env"

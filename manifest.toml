@@ -7,7 +7,7 @@ name = "Indico"
 description.en = "Feature-rich event management system"
 description.fr = "Système de gestion d'événements riche en fonctionnalités"
 
-version = "3.3.5~ynh1"
+version = "3.3.5~ynh2"
 
 maintainers = ["DeMiro5001"]
 
@@ -28,9 +28,9 @@ multi_instance = false
 ldap = false
 sso = false
 
-disk = "50M"
-ram.build = "50M"
-ram.runtime = "50M"
+disk = "500M"
+ram.build = "500M"
+ram.runtime = "200M"
 
 [install]
     [install.domain]
