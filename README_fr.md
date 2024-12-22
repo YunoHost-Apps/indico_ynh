@@ -50,7 +50,7 @@ un flux de travail complet pour l'organisation de conférences avec :
 Une liste plus détaillée [peut être trouvée ici.](https://getindico.io/features/). Il y a aussi une [vidéo](https://www.youtube.com/watch?v=yo8rgg9dOcc)!
 
 
-**Version incluse :** 3.3.5~ynh2
+**Version incluse :** 3.3.5~ynh3
 
 **Démo :** <https://sandbox.getindico.io/>
 
