@@ -77,6 +77,7 @@ pushd $install_dir
     indico setup create-logging-config $install_dir/etc  2>&1
     indico db prepare  2>&1
     indico db --all-plugins upgrade  2>&1
+    deactivate
 popd
 
 chown -R "$app:www-data" "$install_dir" 

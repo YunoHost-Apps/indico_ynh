@@ -37,6 +37,7 @@ pushd $install_dir
     pip install -U indico-plugins 2>&1
     indico db upgrade 2>&1
     indico db --all-plugins upgrade 2>&1
+    deactivate
 popd
 
 chown -R "$app:www-data" "$install_dir"
