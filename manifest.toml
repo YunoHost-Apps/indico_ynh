@@ -36,10 +36,6 @@ ram.runtime = "200M"
     [install.domain]
     type = "domain"
 
-#    [install.path]
-#    type = "path"
-#    default = "/indico"
-
     [install.init_main_permission]
     type = "group"
     default = "visitors"
@@ -55,14 +51,9 @@ ram.runtime = "200M"
     type = "user"
 
     [install.logourl]
-    ask.en = "Input the logo url"
-    ask.fr = "Saisissez l'url du logo"
+    ask.en = "Input the logo URL"
+    ask.fr = "Saisissez l'URL du logo"
     type = "url"
-
-#    [install.password]
-#    help.en = "Use the help field to add an information for the admin about this question."
-#    help.fr = "Utilisez le champ aide pour ajouter une information à l'intention de l'administrateur à propos de cette question."
-#    type = "password"
 
 [resources]
 
