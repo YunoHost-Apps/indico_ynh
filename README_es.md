@@ -55,7 +55,7 @@ A more detailed list [can be found here](https://getindico.io/features/). There 
 
 ## Capturas
 
-![Captura de Indico](./doc/screenshots/sneakpeek.gif)
+![Captura de Indico](./doc/screenshots/screenshot.png)
 
 ## Documentaciones y recursos
 
