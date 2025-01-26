@@ -55,7 +55,7 @@ A more detailed list [can be found here](https://getindico.io/features/). There 
 
 ## Tangkapan Layar
 
-![Tangkapan Layar pada Indico](./doc/screenshots/sneakpeek.gif)
+![Tangkapan Layar pada Indico](./doc/screenshots/screenshot.png)
 
 ## Dokumentasi dan sumber daya
 

@@ -55,7 +55,7 @@ A more detailed list [can be found here](https://getindico.io/features/). There 
 
 ## 截图
 
-![Indico 的截图](./doc/screenshots/sneakpeek.gif)
+![Indico 的截图](./doc/screenshots/screenshot.png)
 
 ## 文档与资源
 

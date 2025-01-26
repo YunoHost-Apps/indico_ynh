@@ -55,7 +55,7 @@ A more detailed list [can be found here](https://getindico.io/features/). There 
 
 ## Pantaila-argazkiak
 
-![Indico(r)en pantaila-argazkia](./doc/screenshots/sneakpeek.gif)
+![Indico(r)en pantaila-argazkia](./doc/screenshots/screenshot.png)
 
 ## Dokumentazioa eta baliabideak
 

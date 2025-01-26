@@ -55,7 +55,7 @@ A more detailed list [can be found here](https://getindico.io/features/). There 
 
 ## Schermafdrukken
 
-![Schermafdrukken van Indico](./doc/screenshots/sneakpeek.gif)
+![Schermafdrukken van Indico](./doc/screenshots/screenshot.png)
 
 ## Documentatie en bronnen
 

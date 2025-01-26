@@ -55,7 +55,7 @@ A more detailed list [can be found here](https://getindico.io/features/). There 
 
 ## Zrzuty ekranu
 
-![Zrzut ekranu z Indico](./doc/screenshots/sneakpeek.gif)
+![Zrzut ekranu z Indico](./doc/screenshots/screenshot.png)
 
 ## Dokumentacja i zasoby
 
