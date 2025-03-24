@@ -1,22 +1,22 @@
 <!--
-N.B.: README ini dibuat secara otomatis oleh <https://github.com/YunoHost/apps/tree/master/tools/readme_generator>
-Ini TIDAK boleh diedit dengan tangan.
+N.B.: Aquest README ha estat generat automàticament per <https://github.com/YunoHost/apps/tree/master/tools/readme_generator>
+NO s'ha de modificar manualment.
 -->
 
-# Indico untuk YunoHost
+# Indico per YunoHost
 
-[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/indico)](https://ci-apps.yunohost.org/ci/apps/indico/)
-![Status kerja](https://apps.yunohost.org/badge/state/indico)
-![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/indico)
+[![Nivell d'integració](https://apps.yunohost.org/badge/integration/indico)](https://ci-apps.yunohost.org/ci/apps/indico/)
+![Estat de funcionament](https://apps.yunohost.org/badge/state/indico)
+![Estat de manteniment](https://apps.yunohost.org/badge/maintained/indico)
 
-[![Pasang Indico dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=indico)
+[![Instal·la Indico amb YunoHosth](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=indico)
 
-*[Baca README ini dengan bahasa yang lain.](./ALL_README.md)*
+*[Llegeix aquest README en altres idiomes.](./ALL_README.md)*
 
-> *Paket ini memperbolehkan Anda untuk memasang Indico secara cepat dan mudah pada server YunoHost.*  
-> *Bila Anda tidak mempunyai YunoHost, silakan berkonsultasi dengan [panduan](https://yunohost.org/install) untuk mempelajari bagaimana untuk memasangnya.*
+> *Aquest paquet et permet instal·lar Indico de forma ràpida i senzilla en un servidor YunoHost.*  
+> *Si no tens YunoHost, consulta [la guia](https://yunohost.org/install) per saber com instal·lar-lo.*
 
-## Ringkasan
+## Visió general
 
 # Indico 
 
@@ -49,33 +49,33 @@ Indico's **main features** are:
 A more detailed list [can be found here](https://getindico.io/features/). There is also a [video](https://www.youtube.com/watch?v=yo8rgg9dOcc)!
 
 
-**Versi terkirim:** 3.3.6~ynh1
+**Versió inclosa:** 3.3.6~ynh1
 
 **Demo:** <https://sandbox.getindico.io/>
 
-## Tangkapan Layar
+## Captures de pantalla
 
-![Tangkapan Layar pada Indico](./doc/screenshots/screenshot.png)
+![Captures de pantalla de Indico](./doc/screenshots/screenshot.png)
 
-## Dokumentasi dan sumber daya
+## Documentació i recursos
 
-- Website aplikasi resmi: <https://getindico.io/>
-- Dokumentasi pengguna resmi: <https://learn.getindico.io/>
-- Dokumentasi admin resmi: <https://docs.getindico.io/en>
-- Depot kode aplikasi hulu: <https://github.com/indico/indico>
-- Gudang YunoHost: <https://apps.yunohost.org/app/indico>
-- Laporkan bug: <https://github.com/YunoHost-Apps/indico_ynh/issues>
+- Lloc web oficial de l'aplicació: <https://getindico.io/>
+- Documentació oficial per l'usuari: <https://learn.getindico.io/>
+- Documentació oficial per l'administrador: <https://docs.getindico.io/en>
+- Repositori oficial del codi de l'aplicació: <https://github.com/indico/indico>
+- Botiga YunoHost: <https://apps.yunohost.org/app/indico>
+- Reportar un error: <https://github.com/YunoHost-Apps/indico_ynh/issues>
 
-## Info developer
+## Informació per a desenvolupadors
 
-Silakan kirim pull request ke [`testing` branch](https://github.com/YunoHost-Apps/indico_ynh/tree/testing).
+Envieu les pull request a la [branca `testing`](https://github.com/YunoHost-Apps/indico_ynh/tree/testing).
 
-Untuk mencoba branch `testing`, silakan dilanjutkan seperti:
+Per provar la branca `testing`, procedir com descrit a continuació:
 
 ```bash
 sudo yunohost app install https://github.com/YunoHost-Apps/indico_ynh/tree/testing --debug
-atau
+o
 sudo yunohost app upgrade indico -u https://github.com/YunoHost-Apps/indico_ynh/tree/testing --debug
 ```
 
-**Info lebih lanjut mengenai pemaketan aplikasi:** <https://yunohost.org/packaging_apps>
+**Més informació sobre l'empaquetatge d'aplicacions:** <https://yunohost.org/packaging_apps>
