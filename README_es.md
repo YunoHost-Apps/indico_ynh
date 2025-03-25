@@ -3,7 +3,7 @@ Este archivo README esta generado automaticamente<https://github.com/YunoHost/ap
 No se debe editar a mano.
 -->
 
-# Indico para Yunohost
+# Indico para YunoHost
 
 [![Nivel de integración](https://apps.yunohost.org/badge/integration/indico)](https://ci-apps.yunohost.org/ci/apps/indico/)
 ![Estado funcional](https://apps.yunohost.org/badge/state/indico)
@@ -49,13 +49,13 @@ Indico's **main features** are:
 A more detailed list [can be found here](https://getindico.io/features/). There is also a [video](https://www.youtube.com/watch?v=yo8rgg9dOcc)!
 
 
-**Versión actual:** 3.3.5~ynh3
+**Versión actual:** 3.3.6~ynh1
 
 **Demo:** <https://sandbox.getindico.io/>
 
 ## Capturas
 
-![Captura de Indico](./doc/screenshots/sneakpeek.gif)
+![Captura de Indico](./doc/screenshots/screenshot.png)
 
 ## Documentaciones y recursos
 

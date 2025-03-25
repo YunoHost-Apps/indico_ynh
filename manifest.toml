@@ -7,7 +7,7 @@ name = "Indico"
 description.en = "Feature-rich event management system"
 description.fr = "Système de gestion d'événements riche en fonctionnalités"
 
-version = "3.3.5~ynh3"
+version = "3.3.6~ynh1"
 
 maintainers = ["DeMiro5001"]
 
@@ -36,10 +36,6 @@ ram.runtime = "200M"
     [install.domain]
     type = "domain"
 
-#    [install.path]
-#    type = "path"
-#    default = "/indico"
-
     [install.init_main_permission]
     type = "group"
     default = "visitors"
@@ -55,22 +51,17 @@ ram.runtime = "200M"
     type = "user"
 
     [install.logourl]
-    ask.en = "Input the logo url"
-    ask.fr = "Saisissez l'url du logo"
+    ask.en = "Input the logo URL"
+    ask.fr = "Saisissez l'URL du logo"
     type = "url"
-
-#    [install.password]
-#    help.en = "Use the help field to add an information for the admin about this question."
-#    help.fr = "Utilisez le champ aide pour ajouter une information à l'intention de l'administrateur à propos de cette question."
-#    type = "password"
 
 [resources]
 
     [resources.sources]
 
     [resources.sources.main]
-    url = "https://github.com/indico/indico/archive/refs/tags/v3.3.5.tar.gz"
-    sha256 = "166819a497f4df0c2bccdc7edc364f068fdc06272107fed38a870596046f4553"
+    url = "https://github.com/indico/indico/archive/refs/tags/v3.3.6.tar.gz"
+    sha256 = "ad1d144e464925891cda1435c8b3792872c0d00b9a27a84295b757ee680dc2e7"
 
     autoupdate.strategy = "latest_github_tag"
 

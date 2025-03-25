@@ -49,13 +49,13 @@ Indico's **main features** are:
 A more detailed list [can be found here](https://getindico.io/features/). There is also a [video](https://www.youtube.com/watch?v=yo8rgg9dOcc)!
 
 
-**Paketatutako bertsioa:** 3.3.5~ynh3
+**Paketatutako bertsioa:** 3.3.6~ynh1
 
 **Demoa:** <https://sandbox.getindico.io/>
 
 ## Pantaila-argazkiak
 
-![Indico(r)en pantaila-argazkia](./doc/screenshots/sneakpeek.gif)
+![Indico(r)en pantaila-argazkia](./doc/screenshots/screenshot.png)
 
 ## Dokumentazioa eta baliabideak
 
@@ -70,7 +70,7 @@ A more detailed list [can be found here](https://getindico.io/features/). There 
 
 Bidali `pull request`a [`testing` abarrera](https://github.com/YunoHost-Apps/indico_ynh/tree/testing).
 
-`testing` abarra probatzeko, ondorengoa egin:
+`testing` abarra probatzeko, honakoa egin:
 
 ```bash
 sudo yunohost app install https://github.com/YunoHost-Apps/indico_ynh/tree/testing --debug

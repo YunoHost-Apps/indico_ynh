@@ -49,13 +49,13 @@ Indico's **main features** are:
 A more detailed list [can be found here](https://getindico.io/features/). There is also a [video](https://www.youtube.com/watch?v=yo8rgg9dOcc)!
 
 
-**Dostarczona wersja:** 3.3.5~ynh3
+**Dostarczona wersja:** 3.3.6~ynh1
 
 **Demo:** <https://sandbox.getindico.io/>
 
 ## Zrzuty ekranu
 
-![Zrzut ekranu z Indico](./doc/screenshots/sneakpeek.gif)
+![Zrzut ekranu z Indico](./doc/screenshots/screenshot.png)
 
 ## Dokumentacja i zasoby
 
