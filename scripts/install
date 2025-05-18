@@ -13,7 +13,7 @@ ynh_app_setting_set --key=secret_key --value=$secret_key
 admin_mail=$(ynh_user_get_info --username=$admin --key=mail)
 ynh_app_setting_set --key=admin_mail --value=$admin_mail
 
-timezone="$(cat /etc/timezone)"
+timezone="$(timedatectl show --value --property=Timezone)"
 ynh_app_setting_set --key=timezone --value=$timezone
 
 redis_db=$(ynh_redis_get_free_db)
