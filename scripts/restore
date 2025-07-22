@@ -55,8 +55,8 @@ systemctl enable "$app-celery.service" --quiet
 ynh_restore "/etc/systemd/system/$app-uwsgi.service"
 systemctl enable "$app-uwsgi.service" --quiet
 
-yunohost service add "$app-celery" --description="Celery for indico" --log="/var/log/$app/$app-celery"
-yunohost service add "$app-uwsgi" --description="uwsgi for indico" --log="/var/log/$app/$app-uwsgi"
+yunohost service add "$app-celery" --description="Celery for indico"
+yunohost service add "$app-uwsgi" --description="uwsgi for indico"
 
 ynh_restore "/etc/logrotate.d/$app"
 
@@ -72,8 +72,8 @@ chown -R "$app:www-data" "/var/log/$app"
 #=================================================
 ynh_script_progression "Reloading NGINX web server and $app's service..."
 
-ynh_systemctl --service="$app-celery" --action="start" --log="/var/log/$app/$app-celery"
-ynh_systemctl --service="$app-uwsgi" --action="start" --log="/var/log/$app/$app-uwsgi"
+ynh_systemctl --service="$app-celery" --action="start" --log="/var/log/$app/$app-celery.log"
+ynh_systemctl --service="$app-uwsgi" --action="start" --log="/var/log/$app/$app-uwsgi.log"
 
 ynh_systemctl --service=nginx --action=reload
 
