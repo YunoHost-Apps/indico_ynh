@@ -72,8 +72,8 @@ chown -R "$app:www-data" "/var/log/$app"
 #=================================================
 ynh_script_progression "Reloading NGINX web server and $app's service..."
 
-ynh_systemctl --service="$app-celery" --action="start"
-ynh_systemctl --service="$app-uwsgi" --action="start"
+ynh_systemctl --service="$app-celery" --action="start" --log="/var/log/$app/$app-celery"
+ynh_systemctl --service="$app-uwsgi" --action="start" --log="/var/log/$app/$app-uwsgi"
 
 ynh_systemctl --service=nginx --action=reload
 
