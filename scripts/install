@@ -13,7 +13,7 @@ ynh_app_setting_set --key=secret_key --value=$secret_key
 admin_mail=$(ynh_user_get_info --username=$admin --key=mail)
 ynh_app_setting_set --key=admin_mail --value=$admin_mail
 
-timezone="$(cat /etc/timezone)"
+timezone="$(timedatectl show --value --property=Timezone)"
 ynh_app_setting_set --key=timezone --value=$timezone
 
 redis_db=$(ynh_redis_get_free_db)
@@ -54,7 +54,8 @@ ynh_psql_db_shell $db_name <<< "CREATE EXTENSION pg_trgm;"
 #=================================================
 ynh_script_progression "Installing Python $py_version..."
 
-install_python $py_version
+#install_python $py_version
+check_python
 
 ynh_script_progression "Installing Python dependencies..."
 
@@ -93,8 +94,8 @@ ynh_config_add_nginx
 ynh_config_add_systemd --service="$app-celery" --template="indico-celery.service"
 ynh_config_add_systemd --service="$app-uwsgi" --template="indico-uwsgi.service"
 
-yunohost service add "$app-celery" --description="Celery for indico" --log="/var/log/$app/$app-celery"
-yunohost service add "$app-uwsgi" --description="uwsgi for indico" --log="/var/log/$app/$app-uwsgi"
+yunohost service add "$app-celery" --description="Celery for indico" --log="/var/log/$app/$app-celery.log"
+yunohost service add "$app-uwsgi" --description="uwsgi for indico" --log="/var/log/$app/$app-uwsgi.log"
 
 ynh_config_add_logrotate
 
