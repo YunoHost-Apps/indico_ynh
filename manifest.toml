@@ -54,6 +54,14 @@ ram.runtime = "200M"
     ask.en = "Input the logo URL"
     ask.fr = "Saisissez l'URL du logo"
     type = "url"
+    
+    [install.mail_user]
+    ask.en = "Choose the application mail system"
+    ask.fr = "Choisissez l'email système de l'application"
+    type = "select"
+    choices.noreply="noreply@"
+    choices.contact="contact@"
+    default = "noreply"
 
 [resources]
 
@@ -66,7 +74,8 @@ ram.runtime = "200M"
     autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
-
+    allow_email = true
+    
     [resources.install_dir]
 
     [resources.data_dir]
