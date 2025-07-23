@@ -31,10 +31,9 @@ ynh_restore "$install_dir"
 chown -R "$app:www-data" "$install_dir"
 
 # Required for celery to run
-    mkdir -p /var/log/$app
-    touch /var/log/$app/$app-celery.log
-    touch /var/log/$app/$app-uwsgi.log
-    chown -R "$app:www-data" "/var/log/$app" 
+mkdir -p /var/log/$app
+touch /var/log/$app/$app-celery.log
+touch /var/log/$app/$app-uwsgi.log
 
 #=================================================
 # RESTORE THE MYSQL DATABASE
@@ -56,10 +55,18 @@ systemctl enable "$app-celery.service" --quiet
 ynh_restore "/etc/systemd/system/$app-uwsgi.service"
 systemctl enable "$app-uwsgi.service" --quiet
 
-yunohost service add "$app-celery" --description="Celery for indico" --log="/var/log/$app/$app-celery"
-yunohost service add "$app-uwsgi" --description="uwsgi for indico" --log="/var/log/$app/$app-uwsgi"
+yunohost service add "$app-celery" --description="Celery for indico" --log="/var/log/$app/$app-celery.log"
+yunohost service add "$app-uwsgi" --description="uwsgi for indico" --log="/var/log/$app/$app-uwsgi.log" 
 
 ynh_restore "/etc/logrotate.d/$app"
+
+#=================================================
+# RESTORE VARIOUS FILES
+#=================================================
+
+ynh_restore "/var/log/$app/"
+chown -R "$app:www-data" "/var/log/$app" 
+chmod -R 750  "/var/log/$app"  
 
 #=================================================
 # RELOAD NGINX AND PHP-FPM OR THE APP SERVICE
