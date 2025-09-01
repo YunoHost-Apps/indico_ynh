@@ -4,6 +4,15 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
+# ENSURE DOWNWARD COMPATIBILITY
+#=================================================
+
+if [[ "$mail_user" != "noreply" && "$mail_user" != "contact" ]]; then
+    mail_user="noreply"
+    ynh_app_setting_set --key=mail_user --value="noreply" 
+fi
+
+#=================================================
 # STOP SYSTEMD SERVICE
 #=================================================
 ynh_script_progression "Stopping $app's systemd service..."
@@ -52,8 +61,8 @@ ynh_config_add_nginx
 ynh_config_add_systemd --service="$app-celery" --template="indico-celery.service"
 ynh_config_add_systemd --service="$app-uwsgi" --template="indico-uwsgi.service"
 
-yunohost service add "$app-celery" --description="Celery for indico" --log="/var/log/$app/$app-celery"
-yunohost service add "$app-uwsgi" --description="uwsgi for indico" --log="/var/log/$app/$app-uwsgi"
+yunohost service add "$app-celery" --description="Celery for indico" --log="/var/log/$app/$app-celery.log"
+yunohost service add "$app-uwsgi" --description="uwsgi for indico" --log="/var/log/$app/$app-uwsgi.log"
 
 ynh_config_add_logrotate
 
