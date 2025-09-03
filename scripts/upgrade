@@ -7,7 +7,7 @@ source /usr/share/yunohost/helpers
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
 
-if [[ "$mail_user" != "noreply" && "$mail_user" != "contact" ]]; then
+if [[ "${mail_user:-}" != "noreply" && "${mail_user:-}" != "contact" ]]; then
     mail_user="noreply"
     ynh_app_setting_set --key=mail_user --value="noreply" 
 fi
