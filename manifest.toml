@@ -7,7 +7,7 @@ name = "Indico"
 description.en = "Feature-rich event management system"
 description.fr = "Système de gestion d'événements riche en fonctionnalités"
 
-version = "3.3.7~ynh2"
+version = "3.3.8~ynh1"
 
 maintainers = ["DeMiro5001"]
 
@@ -68,8 +68,8 @@ ram.runtime = "200M"
     [resources.sources]
 
     [resources.sources.main]
-    url = "https://github.com/indico/indico/archive/refs/tags/v3.3.7.tar.gz"
-    sha256 = "98ce006dad154433261baa1150db71760503a96ace04a985e2caf18fb6bc338b"
+    url = "https://github.com/indico/indico/archive/refs/tags/v3.3.8.tar.gz"
+    sha256 = "03c4a7ac57d3811599e1d27a5b59370459ee909effdd9fc575ead613c7c891a0"
 
     autoupdate.strategy = "latest_github_tag"
 
