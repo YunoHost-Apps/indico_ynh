@@ -31,7 +31,7 @@ ynh_app_setting_set --key=logourl --value=$logourl
 #=================================================
 ynh_script_progression "Setting up source files..."
 
-mkdir -p "$install_dir/web" "$install_dir/archive"  "$install_dir/cache"  "$install_dir/log"  "$install_dir/tmp"  "$install_dir/etc" "/tmp/__APP__"
+mkdir -p "$install_dir/web" "$install_dir/archive"  "$install_dir/cache"  "$install_dir/log"  "$install_dir/tmp"  "$install_dir/etc"
 touch "$install_dir/web/uwsgi.sock" 
 touch "$install_dir/web/uwsgi-stats.sock" 
 
@@ -83,7 +83,6 @@ popd
 
 chown -R "$app:www-data" "$install_dir" 
 chown -R "$app:www-data" "/var/log/$app"
-chown -R "$app:www-data" "/tmp/__APP__"
 
 #=================================================
 # SYSTEM CONFIGURATION
