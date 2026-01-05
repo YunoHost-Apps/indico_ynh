@@ -33,7 +33,7 @@ chown -R "$app:www-data" "$install_dir"
 # Required for celery to run
 mkdir -p /var/log/$app
 touch /var/log/$app/$app-celery.log
-touch /var/log/$app/$app-uwsgi.log
+touch /var/log/$app/$app-granian.log
 
 #=================================================
 # RESTORE THE MYSQL DATABASE
@@ -53,10 +53,10 @@ ynh_restore "/etc/systemd/system/$app-celery.service"
 systemctl enable "$app-celery.service" --quiet
 
 ynh_restore "/etc/systemd/system/$app-uwsgi.service"
-systemctl enable "$app-uwsgi.service" --quiet
+systemctl enable "$app-granian.service" --quiet
 
 yunohost service add "$app-celery" --description="Celery for indico" --log="/var/log/$app/$app-celery.log"
-yunohost service add "$app-uwsgi" --description="uwsgi for indico" --log="/var/log/$app/$app-uwsgi.log" 
+yunohost service add "$app-granian" --description="granian for indico" --log="/var/log/$app/$app-granian.log" 
 
 ynh_restore "/etc/logrotate.d/$app"
 
@@ -74,7 +74,7 @@ chmod -R 750  "/var/log/$app"
 ynh_script_progression "Reloading NGINX web server and $app's service..."
 
 ynh_systemctl --service="$app-celery" --action="start"
-ynh_systemctl --service="$app-uwsgi" --action="start"
+ynh_systemctl --service="$app-granian" --action="start"
 
 ynh_systemctl --service=nginx --action=reload
 
