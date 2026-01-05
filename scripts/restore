@@ -52,7 +52,7 @@ ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
 ynh_restore "/etc/systemd/system/$app-celery.service"
 systemctl enable "$app-celery.service" --quiet
 
-ynh_restore "/etc/systemd/system/$app-uwsgi.service"
+ynh_restore "/etc/systemd/system/$app-granian.service"
 systemctl enable "$app-granian.service" --quiet
 
 yunohost service add "$app-celery" --description="Celery for indico" --log="/var/log/$app/$app-celery.log"
