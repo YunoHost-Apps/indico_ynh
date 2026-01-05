@@ -41,7 +41,7 @@ ynh_script_progression "Upgrading source files..."
 check_python
 
 pushd $install_dir
-    ln -s web/indico.wsgi wsgi.py
+    ln -sf web/indico.wsgi wsgi.py
     source "$install_dir/.venv/bin/activate"
     pip install -U indico 2>&1
     pip install -U indico-plugins 2>&1
