@@ -44,6 +44,7 @@ pushd $install_dir
     source "$install_dir/.venv/bin/activate"
     pip install -U indico 2>&1
     pip install -U indico-plugins 2>&1
+    pip install -U granian 2>&1
     indico db upgrade 2>&1
     indico db --all-plugins upgrade 2>&1
     deactivate
