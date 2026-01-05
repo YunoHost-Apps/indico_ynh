@@ -3,7 +3,7 @@ Description=Indico Granian (Rust HTTP Server)
 After=network.target
 
 [Service]
-ExecStart=__INSTALL_DIR__/.venv/bin/granian --interface wsgi --host 127.0.0.1 --port __PORT__ --workers 4 wsgi:application
+ExecStart=__INSTALL_DIR__/.venv/bin/granian --interface wsgi --host 127.0.0.1 --port __PORT__ --workers 4 --threads 8 wsgi:application
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=always
 WorkingDirectory=__INSTALL_DIR__/
