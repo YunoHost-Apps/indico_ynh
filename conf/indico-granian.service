@@ -12,7 +12,6 @@ User=__APP__
 Group=www-data
 UMask=0027
 
-# Granian runs as a simple process (no forking/daemonizing like uWSGI default)
 Type=simple
 KillMode=mixed
 KillSignal=SIGQUIT
@@ -20,6 +19,8 @@ TimeoutStopSec=300
 
 # Environment variables
 Environment="INDICO_CONFIG=__INSTALL_DIR__/etc/indico.conf"
+Environment="LANG=C.UTF-8"
+Environment="LC_ALL=C.UTF-8"
 
 # Hardening
 NoNewPrivileges=yes
