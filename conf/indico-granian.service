@@ -1,0 +1,53 @@
+[Unit]
+Description=Indico Granian (Rust HTTP Server)
+After=network.target
+
+[Service]
+ExecStart=__INSTALL_DIR__/.venv/bin/granian --interface wsgi --host 127.0.0.1 --port __PORT__ --workers 4 wsgi:application
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+WorkingDirectory=__INSTALL_DIR__/
+SyslogIdentifier=indico-granian
+User=__APP__
+Group=www-data
+UMask=0027
+
+# Granian runs as a simple process (no forking/daemonizing like uWSGI default)
+Type=simple
+KillMode=mixed
+KillSignal=SIGQUIT
+TimeoutStopSec=300
+
+# Environment variables
+Environment="INDICO_CONFIG=__INSTALL_DIR__/etc/indico.conf"
+
+# Hardening
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+RestrictNamespaces=yes
+RestrictRealtime=yes
+DevicePolicy=closed
+ProtectClock=yes
+ProtectHostname=yes
+ProtectProc=invisible
+ProtectSystem=full
+ProtectControlGroups=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+LockPersonality=yes
+SystemCallArchitectures=native
+
+CapabilityBoundingSet=~CAP_RAWIO CAP_MKNOD
+CapabilityBoundingSet=~CAP_AUDIT_CONTROL CAP_AUDIT_READ CAP_AUDIT_WRITE
+CapabilityBoundingSet=~CAP_SYS_BOOT CAP_SYS_TIME CAP_SYS_MODULE CAP_SYS_PACCT
+CapabilityBoundingSet=~CAP_LEASE CAP_LINUX_IMMUTABLE CAP_IPC_LOCK
+CapabilityBoundingSet=~CAP_BLOCK_SUSPEND CAP_WAKE_ALARM
+CapabilityBoundingSet=~CAP_SYS_TTY_CONFIG
+CapabilityBoundingSet=~CAP_MAC_ADMIN CAP_MAC_OVERRIDE
+CapabilityBoundingSet=~CAP_NET_ADMIN CAP_NET_BROADCAST CAP_NET_RAW
+CapabilityBoundingSet=~CAP_SYS_ADMIN CAP_SYS_PTRACE CAP_SYSLOG
+
+[Install]
+WantedBy=multi-user.target
