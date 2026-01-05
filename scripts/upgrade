@@ -18,7 +18,7 @@ fi
 ynh_script_progression "Stopping $app's systemd service..."
 
 ynh_systemctl --service="$app-celery" --action="stop"
-ynh_systemctl --service="$app-uwsgi" --action="stop"
+ynh_systemctl --service="$app-granian" --action="stop"
 
 #=================================================
 # UPDATE A CONFIG FILE
@@ -27,7 +27,7 @@ ynh_script_progression "Updating $app's configuration files..."
 
 logourl=$(ynh_app_setting_get --key=logourl)
 
-ynh_config_add --template="uwsgi-indico.ini" --destination="$install_dir/uwsgi-indico.ini"
+#ynh_config_add --template="uwsgi-indico.ini" --destination="$install_dir/uwsgi-indico.ini"
 ynh_config_add --template="indico.conf" --destination="$install_dir/etc/indico.conf"
 ynh_config_add --template=".env" --destination="$install_dir/.env"
 ynh_config_add --template="logging.yaml" --destination="$install_dir/logging.yaml"
@@ -59,10 +59,10 @@ ynh_script_progression "Upgrading system configurations related to $app..."
 ynh_config_add_nginx
 
 ynh_config_add_systemd --service="$app-celery" --template="indico-celery.service"
-ynh_config_add_systemd --service="$app-uwsgi" --template="indico-uwsgi.service"
+ynh_config_add_systemd --service="$app-granian" --template="indico-granian.service"
 
 yunohost service add "$app-celery" --description="Celery for indico" --log="/var/log/$app/$app-celery.log"
-yunohost service add "$app-uwsgi" --description="uwsgi for indico" --log="/var/log/$app/$app-uwsgi.log"
+yunohost service add "$app-granian" --description="granian for indico" --log="/var/log/$app/$app-granian.log"
 
 ynh_config_add_logrotate
 
@@ -72,7 +72,7 @@ ynh_config_add_logrotate
 ynh_script_progression "Starting $app's systemd service..."
 
 ynh_systemctl --service="$app-celery" --action="start"
-ynh_systemctl --service="$app-uwsgi" --action="start"
+ynh_systemctl --service="$app-granian" --action="start"
 
 #=================================================
 # END OF SCRIPT
