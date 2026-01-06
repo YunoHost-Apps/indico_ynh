@@ -17,13 +17,6 @@ chown -R "$app:www-data" "$data_dir"
 #=================================================
 ynh_script_progression "ReInstalling Python $py_version..."
 
-# Store current path
-current_path=$(pwd)
-# Install python (I will look for a way to backup and restore python instead of compiling it everytime)
-install_python $py_version
-# Go back to previous path
-cd $current_path
-
 ynh_script_progression "Restoring the app main directory..."
 
 ynh_restore "$install_dir"
