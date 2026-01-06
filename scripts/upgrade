@@ -27,7 +27,6 @@ ynh_script_progression "Updating $app's configuration files..."
 
 logourl=$(ynh_app_setting_get --key=logourl)
 
-#ynh_config_add --template="uwsgi-indico.ini" --destination="$install_dir/uwsgi-indico.ini"
 ynh_config_add --template="indico.conf" --destination="$install_dir/etc/indico.conf"
 ynh_config_add --template=".env" --destination="$install_dir/.env"
 ynh_config_add --template="logging.yaml" --destination="$install_dir/logging.yaml"
@@ -38,14 +37,12 @@ ynh_config_add --template="indico.wsgi" --destination="$install_dir/web/indico.w
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-check_python
-
 pushd $install_dir
     ln -sf web/indico.wsgi wsgi.py
     source "$install_dir/.venv/bin/activate"
-    pip install -U indico 2>&1
-    pip install -U indico-plugins 2>&1
-    pip install -U granian 2>&1
+    uv pip install -U indico 2>&1
+    uv pip install -U indico-plugins 2>&1
+    uv pip install -U granian 2>&1
     indico db upgrade 2>&1
     indico db --all-plugins upgrade 2>&1
     deactivate
