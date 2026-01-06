@@ -9,17 +9,15 @@ source /usr/share/yunohost/helpers
 ynh_script_progression "Removing system configurations related to $app..."
 
 yunohost service remove "$app-celery"
-yunohost service remove "$app-uwsgi"
+yunohost service remove "$app-granian"
 
 ynh_config_remove_systemd "$app-celery" 
-ynh_config_remove_systemd "$app-uwsgi"
+ynh_config_remove_systemd "$app-granian"
 
 ynh_config_remove_nginx
 
 ynh_redis_remove_db "$redis_db"
 ynh_redis_remove_db "$celery_db"
-
-uninstall_python $py_version
 
 #=================================================
 # END OF SCRIPT

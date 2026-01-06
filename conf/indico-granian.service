@@ -1,22 +1,29 @@
 [Unit]
-Description=Indico uWSGI
+Description=Indico Granian (Rust HTTP Server)
 After=network.target
 
 [Service]
-ExecStart=__INSTALL_DIR__/.venv/bin/uwsgi --ini __INSTALL_DIR__/uwsgi-indico.ini
+ExecStart=__INSTALL_DIR__/.venv/bin/granian --interface wsgi --host 127.0.0.1 --port __PORT__ --workers 4 --blocking-threads 8 --backlog 2048 wsgi:application
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=always
 WorkingDirectory=__INSTALL_DIR__/
-SyslogIdentifier=indico-uwsgi
+SyslogIdentifier=indico-granian
 User=__APP__
 Group=www-data
 UMask=0027
-Type=notify
-NotifyAccess=all
+
+Type=simple
 KillMode=mixed
 KillSignal=SIGQUIT
 TimeoutStopSec=300
 
+# Environment variables
+Environment="INDICO_CONFIG=__INSTALL_DIR__/etc/indico.conf"
+Environment="LANG=C.UTF-8"
+Environment="LC_ALL=C.UTF-8"
+Environment="PYTHONIOENCODING=UTF-8"
+
+# Hardening
 NoNewPrivileges=yes
 PrivateTmp=yes
 PrivateDevices=yes
@@ -33,10 +40,7 @@ ProtectKernelModules=yes
 ProtectKernelTunables=yes
 LockPersonality=yes
 SystemCallArchitectures=native
-#SystemCallFilter=~@clock @debug @module @mount @obsolete @reboot @setuid @swap @cpu-emulation @privileged
 
-# Denying access to capabilities that should not be relevant for webapps
-# Doc: https://man7.org/linux/man-pages/man7/capabilities.7.html
 CapabilityBoundingSet=~CAP_RAWIO CAP_MKNOD
 CapabilityBoundingSet=~CAP_AUDIT_CONTROL CAP_AUDIT_READ CAP_AUDIT_WRITE
 CapabilityBoundingSet=~CAP_SYS_BOOT CAP_SYS_TIME CAP_SYS_MODULE CAP_SYS_PACCT
