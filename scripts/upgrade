@@ -37,6 +37,11 @@ ynh_config_add --template="indico.wsgi" --destination="$install_dir/web/indico.w
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
+ynh_script_progression "Upgrading uv..."
+
+ynh_setup_source --dest_dir="$install_dir/.uv" --source_id="uv"
+chmod +x "$install_dir/.uv/uv"
+
 ynh_script_progression "Upgrading source files..."
 
 pushd $install_dir
