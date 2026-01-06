@@ -75,10 +75,10 @@ pushd $install_dir
 # I don't know why, but without this symlink the install produces a site without styles
     ln -s $install_dir/.venv/lib/python$py_vshort/site-packages/indico/web/static $install_dir/web/static
     ln -s web/indico.wsgi wsgi.py
-    ynh_exec_as_app uv indico setup create-symlinks $install_dir  2>&1
-    ynh_exec_as_app uv indico setup create-logging-config $install_dir/etc  2>&1
-    ynh_exec_as_app uv indico db prepare  2>&1
-    ynh_exec_as_app uv indico db --all-plugins upgrade  2>&1
+    ynh_exec_as_app indico setup create-symlinks $install_dir  2>&1
+    ynh_exec_as_app indico setup create-logging-config $install_dir/etc  2>&1
+    ynh_exec_as_app indico db prepare  2>&1
+    ynh_exec_as_app indico db --all-plugins upgrade  2>&1
 popd
 
 chown -R "$app:www-data" "$install_dir" 
