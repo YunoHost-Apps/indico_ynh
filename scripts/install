@@ -57,7 +57,7 @@ ynh_script_progression "Preparing UV..."
     export UV_CACHE_DIR="$install_dir/.uv_cache"
     echo "PATH=$install_dir/bin:\$PATH" >> $install_dir/.bashrc 
     echo "UV_PYTHON_INSTALL_DIR=$install_dir/.python_runtime" >> $install_dir/.bashrc 
-    echo "UV_CACHE_DIR="$install_dir/.uv_cache" >> $install_dir/.bashrc
+    echo "UV_CACHE_DIR=$install_dir/.uv_cache" >> $install_dir/.bashrc
     
 ynh_script_progression "Installing Python dependencies..."
 
