@@ -62,12 +62,13 @@ ynh_script_progression "Preparing UV..."
 ynh_script_progression "Installing Python dependencies..."
 
 pushd $install_dir
-    ynh_exec_as_app uv venv "$install_dir/.venv" --python 3.12
+    uv venv "$install_dir/.venv" --python 3.12
     echo "source $install_dir/.venv/bin/activate" >> $install_dir/.bashrc
-    ynh_exec_as_app uv pip install --upgrade pip setuptools wheel granian 2>&1
-    ynh_exec_as_app uv pip install indico 2>&1
-    ynh_exec_as_app uv pip install python-dotenv 2>&1
-    ynh_exec_as_app uv pip install indico-plugins 2>&1
+    source $install_dir/.venv/bin/activate
+    uv pip install --upgrade pip setuptools wheel granian 2>&1
+    uv pip install indico 2>&1
+    uv pip install python-dotenv 2>&1
+    uv pip install indico-plugins 2>&1
     mkdir -p /var/log/$app
     touch /var/log/$app/$app-celery.log
     touch /var/log/$app/$app-granian.log
@@ -75,10 +76,11 @@ pushd $install_dir
 # I don't know why, but without this symlink the install produces a site without styles
     ln -s $install_dir/.venv/lib/python$py_vshort/site-packages/indico/web/static $install_dir/web/static
     ln -s web/indico.wsgi wsgi.py
-    ynh_exec_as_app indico setup create-symlinks $install_dir  2>&1
-    ynh_exec_as_app indico setup create-logging-config $install_dir/etc  2>&1
-    ynh_exec_as_app indico db prepare  2>&1
-    ynh_exec_as_app indico db --all-plugins upgrade  2>&1
+    indico setup create-symlinks $install_dir  2>&1
+    indico setup create-logging-config $install_dir/etc  2>&1
+    indico db prepare  2>&1
+    indico db --all-plugins upgrade  2>&1
+    deactivate
 popd
 
 chown -R "$app:www-data" "$install_dir" 
