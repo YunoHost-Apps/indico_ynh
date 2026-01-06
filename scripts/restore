@@ -15,8 +15,6 @@ chown -R "$app:www-data" "$data_dir"
 #=================================================
 # RESTORE THE APP MAIN DIR
 #=================================================
-ynh_script_progression "ReInstalling Python $py_version..."
-
 ynh_script_progression "Restoring the app main directory..."
 
 ynh_restore "$install_dir"
