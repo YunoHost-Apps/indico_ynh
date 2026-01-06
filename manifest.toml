@@ -7,7 +7,7 @@ name = "Indico"
 description.en = "Feature-rich event management system"
 description.fr = "Système de gestion d'événements riche en fonctionnalités"
 
-version = "3.3.9~ynh2"
+version = "3.3.9~ynh3"
 
 maintainers = ["DeMiro5001"]
 
@@ -67,12 +67,25 @@ ram.runtime = "200M"
 
     [resources.sources]
 
-    [resources.sources.main]
-    url = "https://github.com/indico/indico/archive/refs/tags/v3.3.9.tar.gz"
-    sha256 = "bb245141316d4f8e68232b40e83d2c96ccf010bc4705b50109fae25718d208cc"
-
-    autoupdate.strategy = "latest_github_tag"
-
+        [resources.sources.main]
+        url = "https://github.com/indico/indico/archive/refs/tags/v3.3.9.tar.gz"
+        sha256 = "bb245141316d4f8e68232b40e83d2c96ccf010bc4705b50109fae25718d208cc"
+    
+        autoupdate.strategy = "latest_github_tag"
+    
+        [resources.sources.uv]
+        amd64.url = "https://github.com/astral-sh/uv/releases/download/0.9.22/uv-x86_64-unknown-linux-gnu.tar.gz"
+        amd64.sha256 = "e170aed70ac0225feee612e855d3a57ae73c61ffb22c7e52c3fd33b87c286508"
+        
+        arm64.url = "https://github.com/astral-sh/uv/releases/download/0.9.22/uv-aarch64-unknown-linux-musl.tar.gz"
+        arm64.sha256 = "a400eaede62557af86bed6c5252a101aa1efd596698bb10c9400334fcc2847ec"
+        
+        in_subdir = true
+        
+        autoupdate.strategy = "latest_github_release"
+        autoupdate.asset.amd64 = "uv-x86_64-unknown-linux-gnu.tar.gz"
+        autoupdate.asset.arm64 = "uv-aarch64-unknown-linux-gnu.tar.gz"
+    
     [resources.system_user]
     allow_email = true
     
