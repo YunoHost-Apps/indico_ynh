@@ -26,21 +26,23 @@ redis_unlock "redis_db"
 
 ynh_app_setting_set --key=logourl --value=$logourl
 
+py_vshort="3.12"
+ynh_app_setting_set --key=py_vshort --value=$py_vshort
+
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Setting up source files..."
 
-mkdir -p "$install_dir/web" "$install_dir/archive"  "$install_dir/cache"  "$install_dir/log"  "$install_dir/tmp"  "$install_dir/etc"
-#touch "$install_dir/web/uwsgi.sock" 
-#touch "$install_dir/web/uwsgi-stats.sock" 
+mkdir -p "$install_dir/web" "$install_dir/archive"  "$install_dir/cache"  "$install_dir/log"  "$install_dir/tmp"  "$install_dir/etc" "$install_dir/.uv" "$install_dir/.python_runtime" "$install_dir/.uv_cache"
+ynh_setup_source --dest_dir="$install_dir/.uv" --source_id="uv"
+chmod +x "$install_dir/.uv/uv"
 
 #=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
 ynh_script_progression "Adding $app's configuration files..."
 
-#ynh_config_add --template="uwsgi-indico.ini" --destination="$install_dir/uwsgi-indico.ini"
 ynh_config_add --template="indico.conf" --destination="$install_dir/etc/indico.conf"
 ynh_config_add --template=".env" --destination="$install_dir/.env"
 ynh_config_add --template="logging.yaml" --destination="$install_dir/logging.yaml"
@@ -52,20 +54,24 @@ ynh_psql_db_shell $db_name <<< "CREATE EXTENSION pg_trgm;"
 #=================================================
 # INSTALL PYTHON DEPENDENCIES
 #=================================================
-ynh_script_progression "Installing Python $py_version..."
-
-check_python
-
+ynh_script_progression "Preparing UV..."
+    export PATH="$install_dir/.uv:$PATH"
+    export UV_PYTHON_INSTALL_DIR="$install_dir/.python_runtime"
+    export UV_CACHE_DIR="$install_dir/.uv_cache"
+    echo "PATH=$install_dir/bin:\$PATH" >> $install_dir/.bashrc 
+    echo "UV_PYTHON_INSTALL_DIR=$install_dir/.python_runtime" >> $install_dir/.bashrc 
+    echo "UV_CACHE_DIR=$install_dir/.uv_cache" >> $install_dir/.bashrc
+    
 ynh_script_progression "Installing Python dependencies..."
 
 pushd $install_dir
-    /usr/local/bin/python$py_vshort -m venv  --upgrade-deps --prompt indico "$install_dir/.venv" 
-    source "$install_dir/.venv/bin/activate"
+    uv venv "$install_dir/.venv" --python $py_vshort
     echo "source $install_dir/.venv/bin/activate" >> $install_dir/.bashrc
-    pip install --upgrade pip setuptools wheel granian 2>&1
-    pip install indico 2>&1
-    pip install python-dotenv 2>&1
-    pip install indico-plugins 2>&1
+    source $install_dir/.venv/bin/activate
+    uv pip install --upgrade pip setuptools wheel granian 2>&1
+    uv pip install indico 2>&1
+    uv pip install python-dotenv 2>&1
+    uv pip install indico-plugins 2>&1
     mkdir -p /var/log/$app
     touch /var/log/$app/$app-celery.log
     touch /var/log/$app/$app-granian.log
