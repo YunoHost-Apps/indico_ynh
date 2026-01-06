@@ -31,8 +31,9 @@ ynh_app_setting_set --key=logourl --value=$logourl
 #=================================================
 ynh_script_progression "Setting up source files..."
 
-mkdir -p "$install_dir/web" "$install_dir/archive"  "$install_dir/cache"  "$install_dir/log"  "$install_dir/tmp"  "$install_dir/etc" "$install_dir/.uv_python"
-ynh_setup_source --dest_dir="$install_dir/.uv_python" --source_id="uv"
+mkdir -p "$install_dir/web" "$install_dir/archive"  "$install_dir/cache"  "$install_dir/log"  "$install_dir/tmp"  "$install_dir/etc" "$install_dir/.uv" "$install_dir/.python_runtime" "$install_dir/.uv_cache"
+ynh_setup_source --dest_dir="$install_dir/.uv" --source_id="uv"
+chmod +x "$install_dir/.uv/uv"
 
 #=================================================
 # APP INITIAL CONFIGURATION
@@ -50,19 +51,26 @@ ynh_psql_db_shell $db_name <<< "CREATE EXTENSION pg_trgm;"
 #=================================================
 # INSTALL PYTHON DEPENDENCIES
 #=================================================
-ynh_script_progression "Installing Python $py_version..."
-
+ynh_script_progression "Preparing UV..."
+    export PATH="$install_dir/.uv:$PATH"
+    export UV_PYTHON_INSTALL_DIR="$install_dir/.python_runtime"
+    export UV_CACHE_DIR="$install_dir/.uv_cache"
+    cat <<EOF > "$install_dir/.bashrc"
+    export PATH="$install_dir/bin:\$PATH"
+    export UV_PYTHON_INSTALL_DIR="$install_dir/.python_runtime"
+    export UV_CACHE_DIR="$install_dir/.uv_cache"
+    EOF
+    
 ynh_script_progression "Installing Python dependencies..."
 
 pushd $install_dir
-    export UV_PYTHON_INSTALL_DIR="$install_dir/.uv_python"
-    
+    ynh_exec_as_app uv venv "$install_dir/.venv" --python 3.12
     source "$install_dir/.venv/bin/activate"
     echo "source $install_dir/.venv/bin/activate" >> $install_dir/.bashrc
-    pip install --upgrade pip setuptools wheel granian 2>&1
-    pip install indico 2>&1
-    pip install python-dotenv 2>&1
-    pip install indico-plugins 2>&1
+    ynh_exec_as_app uv pip install --upgrade pip setuptools wheel granian 2>&1
+    ynh_exec_as_app uv pip install indico 2>&1
+    ynh_exec_as_app uv pip install python-dotenv 2>&1
+    ynh_exec_as_app uv pip install indico-plugins 2>&1
     mkdir -p /var/log/$app
     touch /var/log/$app/$app-celery.log
     touch /var/log/$app/$app-granian.log
@@ -70,10 +78,10 @@ pushd $install_dir
 # I don't know why, but without this symlink the install produces a site without styles
     ln -s $install_dir/.venv/lib/python$py_vshort/site-packages/indico/web/static $install_dir/web/static
     ln -s web/indico.wsgi wsgi.py
-    indico setup create-symlinks $install_dir  2>&1
-    indico setup create-logging-config $install_dir/etc  2>&1
-    indico db prepare  2>&1
-    indico db --all-plugins upgrade  2>&1
+    ynh_exec_as_app uv indico setup create-symlinks $install_dir  2>&1
+    ynh_exec_as_app uv indico setup create-logging-config $install_dir/etc  2>&1
+    ynh_exec_as_app uv indico db prepare  2>&1
+    ynh_exec_as_app uv indico db --all-plugins upgrade  2>&1
     deactivate
 popd
 
