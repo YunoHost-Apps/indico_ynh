@@ -26,6 +26,9 @@ redis_unlock "redis_db"
 
 ynh_app_setting_set --key=logourl --value=$logourl
 
+py_vshort="3.12"
+ynh_app_setting_set --key=py_vshort --value=$py_vshort
+
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
@@ -62,7 +65,7 @@ ynh_script_progression "Preparing UV..."
 ynh_script_progression "Installing Python dependencies..."
 
 pushd $install_dir
-    uv venv "$install_dir/.venv" --python 3.12
+    uv venv "$install_dir/.venv" --python $py_vshort
     echo "source $install_dir/.venv/bin/activate" >> $install_dir/.bashrc
     source $install_dir/.venv/bin/activate
     uv pip install --upgrade pip setuptools wheel granian 2>&1
