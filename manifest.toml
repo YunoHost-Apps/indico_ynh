@@ -7,7 +7,7 @@ name = "Indico"
 description.en = "Feature-rich event management system"
 description.fr = "Système de gestion d'événements riche en fonctionnalités"
 
-version = "3.3.9~ynh4"
+version = "3.3.9~ynh5"
 
 maintainers = ["DeMiro5001"]
 
@@ -75,12 +75,22 @@ ram.runtime = "200M"
     
         [resources.sources.uv]
         amd64.url = "https://github.com/astral-sh/uv/releases/download/0.9.22/uv-x86_64-unknown-linux-gnu.tar.gz"
-        amd64.sha256 = "e170aed70ac0225feee612e855d3a57ae73c61ffb22c7e52c3fd33b87c286508"
+        amd64.sha256 = "fa1f4abfe101d43e820342210c3c6854028703770f81e95b119ed1e65ec81b35"
+        arm64.url = "https://github.com/astral-sh/uv/releases/download/0.9.22/uv-x86_64-unknown-linux-gnu.tar.gz"
+        arm64.sha256 = "fa1f4abfe101d43e820342210c3c6854028703770f81e95b119ed1e65ec81b35"
+        armhf.url = "https://github.com/astral-sh/uv/releases/download/0.9.22/uv-x86_64-unknown-linux-gnu.tar.gz"
+        armhf.sha256 = "fa1f4abfe101d43e820342210c3c6854028703770f81e95b119ed1e65ec81b35"
+        i386.url = "https://github.com/astral-sh/uv/releases/download/0.9.22/uv-x86_64-unknown-linux-gnu.tar.gz"
+        i386.sha256 = "fa1f4abfe101d43e820342210c3c6854028703770f81e95b119ed1e65ec81b35"
         
         in_subdir = true
         
         autoupdate.strategy = "latest_github_release"
-        autoupdate.asset.amd64 = "uv-x86_64-unknown-linux-gnu.tar.gz"
+        autoupdate.upstream = "https://github.com/astral-sh/uv"
+        autoupdate.asset.amd64 = "^uv-x86_64-unknown-linux-gnu.tar.gz$"
+        autoupdate.asset.arm64 = "^uv-aarch64-unknown-linux-gnu.tar.gz$"
+        autoupdate.asset.armhf = "^uv-armv7-unknown-linux-gnueabihf.tar.gz$"
+        autoupdate.asset.i386 = "^uv-i686-unknown-linux-gnu.tar.gz$"
     
     [resources.system_user]
     allow_email = true
