@@ -7,7 +7,7 @@ name = "Indico"
 description.en = "Feature-rich event management system"
 description.fr = "Système de gestion d'événements riche en fonctionnalités"
 
-version = "3.3.9~ynh7"
+version = "3.3.9~ynh8"
 
 maintainers = ["DeMiro5001"]
 
@@ -77,11 +77,11 @@ ram.runtime = "200M"
         amd64.url = "https://github.com/astral-sh/uv/releases/download/0.9.25/uv-x86_64-unknown-linux-gnu.tar.gz"
         amd64.sha256 = "fa1f4abfe101d43e820342210c3c6854028703770f81e95b119ed1e65ec81b35"
         arm64.url = "https://github.com/astral-sh/uv/releases/download/0.9.25/uv-aarch64-unknown-linux-gnu.tar.gz"
-        arm64.sha256 = "fa1f4abfe101d43e820342210c3c6854028703770f81e95b119ed1e65ec81b35"
+        arm64.sha256 = "a8f1d71a42c4470251a880348b2d28d530018693324175084fa1749d267c98c6"
         armhf.url = "https://github.com/astral-sh/uv/releases/download/0.9.25/uv-armv7-unknown-linux-gnueabihf.tar.gz"
-        armhf.sha256 = "fa1f4abfe101d43e820342210c3c6854028703770f81e95b119ed1e65ec81b35"
+        armhf.sha256 = "7ae274742a5b2398bd75f9075536c7f0b3f99ebc8c6588c37e3bfcd9cc9d781d"
         i386.url = "https://github.com/astral-sh/uv/releases/download/0.9.25/uv-i686-unknown-linux-gnu.tar.gz"
-        i386.sha256 = "fa1f4abfe101d43e820342210c3c6854028703770f81e95b119ed1e65ec81b35"
+        i386.sha256 = "b9dae29f4e37bc89e69836e59169a51d8cac4da118b7548a20b2269b19c94cad"
         
         in_subdir = true
         
