@@ -7,7 +7,7 @@ name = "Indico"
 description.en = "Feature-rich event management system"
 description.fr = "Système de gestion d'événements riche en fonctionnalités"
 
-version = "3.3.9~ynh15"
+version = "3.3.10~ynh1"
 
 maintainers = ["DeMiro5001"]
 
@@ -68,20 +68,20 @@ ram.runtime = "200M"
     [resources.sources]
 
         [resources.sources.main]
-        url = "https://github.com/indico/indico/archive/refs/tags/v3.3.9.tar.gz"
-        sha256 = "bb245141316d4f8e68232b40e83d2c96ccf010bc4705b50109fae25718d208cc"
+        url = "https://github.com/indico/indico/archive/refs/tags/v3.3.10.tar.gz"
+        sha256 = "2d4e1c62362f85b83e9ef595be3d2b1b7f6435b5fc002871510d707f6ff58d81"
     
         autoupdate.strategy = "latest_github_tag"
     
         [resources.sources.uv]
-        amd64.url = "https://github.com/astral-sh/uv/releases/download/0.10.3/uv-x86_64-unknown-linux-gnu.tar.gz"
-        amd64.sha256 = "c60b9956a0e6727f0ddd881c303a706c6408b2047f3a8fa4d1454a826338ccdc"
-        arm64.url = "https://github.com/astral-sh/uv/releases/download/0.10.3/uv-aarch64-unknown-linux-gnu.tar.gz"
-        arm64.sha256 = "cce7d1e4c34e22955cd647b256409b6504f4ae72acf190a6f26189efefbc9a9d"
-        armhf.url = "https://github.com/astral-sh/uv/releases/download/0.10.3/uv-armv7-unknown-linux-gnueabihf.tar.gz"
-        armhf.sha256 = "1d453ef56127d3aab3ea7f383b27765840e0bdc0b683347191e4cbc26272de2e"
-        i386.url = "https://github.com/astral-sh/uv/releases/download/0.10.3/uv-i686-unknown-linux-gnu.tar.gz"
-        i386.sha256 = "e82e76ced718091d946eed30880728cf39f05b85f4f82c483a7dbf95f1663531"
+        amd64.url = "https://github.com/astral-sh/uv/releases/download/0.10.4/uv-x86_64-unknown-linux-gnu.tar.gz"
+        amd64.sha256 = "6b52a47358deea1c5e173278bf46b2b489747a59ae31f2a4362ed5c6c1c269f7"
+        arm64.url = "https://github.com/astral-sh/uv/releases/download/0.10.4/uv-aarch64-unknown-linux-gnu.tar.gz"
+        arm64.sha256 = "c84a6e6405715caa6e2f5ef8e5f29a5d0bc558a954e9f1b5c082b9d4708c222e"
+        armhf.url = "https://github.com/astral-sh/uv/releases/download/0.10.4/uv-armv7-unknown-linux-gnueabihf.tar.gz"
+        armhf.sha256 = "d1824ed14f3ad0e7cb7835b46bc0299859cd8141d039a66274a135ca9797bf9c"
+        i386.url = "https://github.com/astral-sh/uv/releases/download/0.10.4/uv-i686-unknown-linux-gnu.tar.gz"
+        i386.sha256 = "79821b1d6c035aa8dc32a45d41551a4f010b8e357c98df48c95c5cb5ec18a743"
         
         in_subdir = true
         
