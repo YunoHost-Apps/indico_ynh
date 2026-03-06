@@ -7,7 +7,7 @@ name = "Indico"
 description.en = "Feature-rich event management system"
 description.fr = "Système de gestion d'événements riche en fonctionnalités"
 
-version = "3.3.11~ynh1"
+version = "3.3.11~ynh2"
 
 maintainers = ["DeMiro5001"]
 
@@ -74,14 +74,14 @@ ram.runtime = "200M"
         autoupdate.strategy = "latest_github_tag"
     
         [resources.sources.uv]
-        amd64.url = "https://github.com/astral-sh/uv/releases/download/0.10.7/uv-x86_64-unknown-linux-gnu.tar.gz"
-        amd64.sha256 = "9ac6cee4e379a5abfca06e78a777b26b7ba1f81cb7935b97054d80d85ac00774"
-        arm64.url = "https://github.com/astral-sh/uv/releases/download/0.10.7/uv-aarch64-unknown-linux-gnu.tar.gz"
-        arm64.sha256 = "20efc27d946860093650bcf26096a016b10fdaf03b13c33b75fbde02962beea9"
-        armhf.url = "https://github.com/astral-sh/uv/releases/download/0.10.7/uv-armv7-unknown-linux-gnueabihf.tar.gz"
-        armhf.sha256 = "2e2f88cc5a7b49282c9aa05cfe03e3b8b0a044e90981062fbeb60a7aeba188ca"
-        i386.url = "https://github.com/astral-sh/uv/releases/download/0.10.7/uv-i686-unknown-linux-gnu.tar.gz"
-        i386.sha256 = "1a22aa0d2268a9a6fb2e5f092ca3d1ef7c14f96c3b4fd546226814f376e59d73"
+        amd64.url = "https://github.com/astral-sh/uv/releases/download/0.10.8/uv-x86_64-unknown-linux-gnu.tar.gz"
+        amd64.sha256 = "f0c566b55683395a62fefb9261a060fa09824914b5682c3b9629fa154762ae2f"
+        arm64.url = "https://github.com/astral-sh/uv/releases/download/0.10.8/uv-aarch64-unknown-linux-gnu.tar.gz"
+        arm64.sha256 = "661860e954f87dcd823251191866af3486484d1a9df60eed56f4586ed7559e3d"
+        armhf.url = "https://github.com/astral-sh/uv/releases/download/0.10.8/uv-armv7-unknown-linux-gnueabihf.tar.gz"
+        armhf.sha256 = "1bee8f88a7129f7922c43b0e091a7065d4e13a2934e599aa8a48f162cf9739aa"
+        i386.url = "https://github.com/astral-sh/uv/releases/download/0.10.8/uv-i686-unknown-linux-gnu.tar.gz"
+        i386.sha256 = "3a78c54ffedce8eafd59a19a32eaec538924169fa4bf9d28d2d5841a7f604210"
         
         in_subdir = true
         
