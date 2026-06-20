@@ -20,7 +20,7 @@ userdoc = "https://learn.getindico.io/"
 code = "https://github.com/indico/indico"
 
 [integration]
-yunohost = ">= 12.1.38"
+yunohost = ">= 12.1.39"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
