@@ -73,10 +73,10 @@ ynh_script_progression "Installing Python dependencies..."
 pushd $install_dir
     mise trust
     mise install
-    pip install --upgrade pip setuptools wheel granian 2>&1
-    pip install indico 2>&1
-    pip install python-dotenv 2>&1
-    pip install indico-plugins 2>&1
+    mise exec -- pip install --upgrade pip setuptools wheel granian 2>&1
+    mise exec -- pip install indico 2>&1
+    mise exec -- pip install python-dotenv 2>&1
+    mise exec -- pip install indico-plugins 2>&1
     mkdir -p /var/log/$app
     touch /var/log/$app/$app-celery.log
     touch /var/log/$app/$app-granian.log
