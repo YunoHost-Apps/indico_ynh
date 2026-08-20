@@ -1,5 +1,5 @@
 [tools]
-python = "3.13.0"
+python = "__PY_VSHORT__"
 
 [env]
-_.python.venv = { path = "venv", create = true }
+_.python.venv = { path = ".venv", create = true }
