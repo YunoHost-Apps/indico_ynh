@@ -52,7 +52,7 @@ ynh_psql_db_shell $db_name <<< "CREATE EXTENSION pg_trgm;"
 #=================================================
 # INSTALL PYTHON DEPENDENCIES
 #=================================================
-ynh_script_progression "Preparing mise..."
+ynh_script_progression "Preparing mise config..."
 
   export MISE_DATA_DIR="$install_dir/.mise/data"
   export MISE_CONFIG_DIR="$install_dir/.mise/config"
@@ -62,7 +62,13 @@ ynh_script_progression "Preparing mise..."
   mkdir -p "$MISE_DATA_DIR" "$MISE_CONFIG_DIR" "$MISE_CACHE_DIR" "$MISE_STATE_DIR"
   ynh_config_add --template=".mise.toml" --destination="$install_dir/.mise.toml"
   ynh_config_add --template=".bashrc" --destination="$install_dir/.bashrc"
-  eval "$(/usr/bin/mise activate bash)"
+
+ynh_script_progression "Enable and install mise..."
+# https://mise.jdx.dev/installing-mise.html#apt
+  extrepo enable mise
+  apt update
+  apt install -y mise
+  eval "$(mise activate bash)"
 
 ynh_script_progression "Installing Python dependencies..."
 
