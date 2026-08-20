@@ -35,8 +35,6 @@ ynh_app_setting_set --key=py_vshort --value=$py_vshort
 ynh_script_progression "Setting up source files..."
 
 mkdir -p "$install_dir/web" "$install_dir/archive"  "$install_dir/cache"  "$install_dir/log"  "$install_dir/tmp"  "$install_dir/etc" "$install_dir/.uv" "$install_dir/.python_runtime" "$install_dir/.uv_cache"
-ynh_setup_source --dest_dir="$install_dir/.uv" --source_id="uv"
-chmod +x "$install_dir/.uv/uv"
 
 #=================================================
 # APP INITIAL CONFIGURATION
@@ -54,24 +52,28 @@ ynh_psql_db_shell $db_name <<< "CREATE EXTENSION pg_trgm;"
 #=================================================
 # INSTALL PYTHON DEPENDENCIES
 #=================================================
-ynh_script_progression "Preparing UV..."
-    export PATH="$install_dir/.uv:$PATH"
-    export UV_PYTHON_INSTALL_DIR="$install_dir/.python_runtime"
-    export UV_CACHE_DIR="$install_dir/.uv_cache"
-    echo "PATH=$install_dir/bin:\$PATH" >> $install_dir/.bashrc 
-    echo "UV_PYTHON_INSTALL_DIR=$install_dir/.python_runtime" >> $install_dir/.bashrc 
-    echo "UV_CACHE_DIR=$install_dir/.uv_cache" >> $install_dir/.bashrc
-    
+ynh_script_progression "Preparing mise..."
+
+  export MISE_DATA_DIR="$install_dir/.mise/data"
+  export MISE_CONFIG_DIR="$install_dir/.mise/config"
+  export MISE_CACHE_DIR="$install_dir/.mise/cache"
+  export MISE_STATE_DIR="$install_dir/.mise/state"
+  export MISE_YES=1
+  mkdir -p "$MISE_DATA_DIR" "$MISE_CONFIG_DIR" "$MISE_CACHE_DIR" "$MISE_STATE_DIR"
+  ynh_config_add --template=".mise.toml" --destination="$install_dir/.mise.toml"
+  ynh_config_add --template=".bashrc" --destination="$install_dir/.bashrc"
+ 
 ynh_script_progression "Installing Python dependencies..."
 
 pushd $install_dir
-    uv venv "$install_dir/.venv" --python $py_vshort
+    mise trust
+    mise install
     echo "source $install_dir/.venv/bin/activate" >> $install_dir/.bashrc
     source $install_dir/.venv/bin/activate
-    uv pip install --upgrade pip setuptools wheel granian 2>&1
-    uv pip install indico 2>&1
-    uv pip install python-dotenv 2>&1
-    uv pip install indico-plugins 2>&1
+    pip install --upgrade pip setuptools wheel granian 2>&1
+    pip install indico 2>&1
+    pip install python-dotenv 2>&1
+    pip install indico-plugins 2>&1
     mkdir -p /var/log/$app
     touch /var/log/$app/$app-celery.log
     touch /var/log/$app/$app-granian.log
@@ -96,7 +98,7 @@ ynh_script_progression "Adding system configurations related to $app..."
 
 ynh_config_add_nginx
 
-ynh_config_add_systemd --service="$app-celery" --template="indico-celery.service"
+ynh_config_add_systemd --service="$app-celery" --templte="indico-celery.service"
 ynh_config_add_systemd --service="$app-granian" --template="indico-granian.service"
 
 yunohost service add "$app-celery" --description="Celery for indico" --log="/var/log/$app/$app-celery.log"
