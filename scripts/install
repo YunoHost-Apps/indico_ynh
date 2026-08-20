@@ -100,7 +100,7 @@ ynh_script_progression "Adding system configurations related to $app..."
 
 ynh_config_add_nginx
 
-ynh_config_add_systemd --service="$app-celery" --templte="indico-celery.service"
+ynh_config_add_systemd --service="$app-celery" --template="indico-celery.service"
 ynh_config_add_systemd --service="$app-granian" --template="indico-granian.service"
 
 yunohost service add "$app-celery" --description="Celery for indico" --log="/var/log/$app/$app-celery.log"
