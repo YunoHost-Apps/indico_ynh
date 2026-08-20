@@ -62,8 +62,7 @@ ynh_script_progression "Preparing mise..."
   mkdir -p "$MISE_DATA_DIR" "$MISE_CONFIG_DIR" "$MISE_CACHE_DIR" "$MISE_STATE_DIR"
   ynh_config_add --template=".mise.toml" --destination="$install_dir/.mise.toml"
   ynh_config_add --template=".bashrc" --destination="$install_dir/.bashrc"
-  which mise
-  mise activate bash
+  eval "$(/usr/bin/mise activate bash)"
 
 ynh_script_progression "Installing Python dependencies..."
 
