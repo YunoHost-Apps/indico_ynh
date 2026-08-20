@@ -32,11 +32,9 @@ ynh_app_setting_set --key=py_vshort --value=$py_vshort
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression "Setting up source files..."
+ynh_script_progression "Preparing $app folder structure..."
 
 mkdir -p "$install_dir/web" "$install_dir/archive"  "$install_dir/cache"  "$install_dir/log"  "$install_dir/tmp"  "$install_dir/etc" "$install_dir/.uv" "$install_dir/.python_runtime" "$install_dir/.uv_cache"
-ynh_setup_source --dest_dir="$install_dir/.mise/bin" --source_id="mise"
-chmod +x "$install_dir/.mise/bin/bin/mise"
 
 #=================================================
 # APP INITIAL CONFIGURATION
@@ -48,14 +46,19 @@ ynh_config_add --template=".env" --destination="$install_dir/.env"
 ynh_config_add --template="logging.yaml" --destination="$install_dir/logging.yaml"
 ynh_config_add --template="indico.wsgi" --destination="$install_dir/web/indico.wsgi"
 
+ynh_script_progression "Prepating $aap database..."
+
 ynh_psql_db_shell $db_name <<< "CREATE EXTENSION unaccent;"
 ynh_psql_db_shell $db_name <<< "CREATE EXTENSION pg_trgm;"
 
 #=================================================
 # INSTALL PYTHON DEPENDENCIES
 #=================================================
-ynh_script_progression "Preparing mise config..."
+ynh_script_progression "Setting up source files for mise..."
+  ynh_setup_source --dest_dir="$install_dir/.mise/bin" --source_id="mise"
+  chmod +x "$install_dir/.mise/bin/bin/mise"
 
+ynh_script_progression "Preparing mise config..."
   export PATH="$install_dir/.mise/bin/bin:$PATH"
   export MISE_DATA_DIR="$install_dir/.mise/data"
   export MISE_CONFIG_DIR="$install_dir/.mise/config"
@@ -66,14 +69,14 @@ ynh_script_progression "Preparing mise config..."
   ynh_config_add --template=".mise.toml" --destination="$install_dir/.mise.toml"
   ynh_config_add --template=".bashrc" --destination="$install_dir/.bashrc"
 
-  eval "$(mise activate bash)"
+  ynh_hide_warnings eval "$(mise activate bash)"
 
 ynh_script_progression "Installing Python dependencies..."
 
 pushd $install_dir
-    mise trust
-    mise install
-    mise run install
+    ynh_hide_warnings mise trust
+    ynh_hide_warnings mise install
+    ynh_hide_warnings mise run install
     mkdir -p /var/log/$app
     touch /var/log/$app/$app-celery.log
     touch /var/log/$app/$app-granian.log
@@ -81,7 +84,7 @@ pushd $install_dir
 # I don't know why, but without this symlink the install produces a site without styles
     ln -s $install_dir/.venv/lib/python$py_vshort/site-packages/indico/web/static $install_dir/web/static
     ln -s web/indico.wsgi wsgi.py
-    mise run init
+    ynh_hide_warnings mise run init
 popd
 
 chown -R "$app:www-data" "$install_dir" 
