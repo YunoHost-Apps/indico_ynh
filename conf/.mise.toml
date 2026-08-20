@@ -20,3 +20,11 @@ indico setup create-logging-config "__INSTALL_DIR__/etc"
 indico db prepare
 indico db --all-plugins upgrade
 """
+
+[tasks.upgrade]
+description = "Upgrade Indico core, plugins, dependencies, and database schema"
+run = """
+uv pip install -U indico indico-plugins granian
+indico db upgrade
+indico db --all-plugins upgrade
+"""
