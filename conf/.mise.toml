@@ -1,5 +1,27 @@
 [tools]
 python = "__PY_VSHORT__"
+uv = "latest"
 
 [env]
 _.python.venv = { path = ".venv", create = true }
+PATH = "./.venv/bin"
+
+[tasks.install]
+description = "Install core dependencies and Indico application"
+run = """
+uv pip install --upgrade pip setuptools wheel granian
+
+uv pip install indico python-dotenv indico-plugins
+"""
+
+[tasks.init]
+description = "Initialize Indico configuration and database"
+run = """
+indico setup create-symlinks "__INSTALL_DIR__"
+
+indico setup create-logging-config "__INSTALL_DIR__/etc"
+
+indico db prepare
+
+indico db --all-plugins upgrade
+"""
