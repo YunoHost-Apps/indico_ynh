@@ -73,25 +73,6 @@ ram.runtime = "200M"
     
         autoupdate.strategy = "latest_github_tag"
     
-        [resources.sources.uv]
-        amd64.url = "https://github.com/astral-sh/uv/releases/download/0.12.4/uv-x86_64-unknown-linux-gnu.tar.gz"
-        amd64.sha256 = "c8c60f47e6f88d18dbf6f33d7279fb1fbf7ae76631768152cf5578c3d65729b4"
-        arm64.url = "https://github.com/astral-sh/uv/releases/download/0.12.4/uv-aarch64-unknown-linux-gnu.tar.gz"
-        arm64.sha256 = "49d881b3403187e1f1789720881e77e4251ad4259d86c4844862657d2a35d13f"
-        armhf.url = "https://github.com/astral-sh/uv/releases/download/0.12.4/uv-armv7-unknown-linux-gnueabihf.tar.gz"
-        armhf.sha256 = "fd9d223afc79a4d116d48269ea8cdc00cdeb0637d028843910650abc037e7c4f"
-        i386.url = "https://github.com/astral-sh/uv/releases/download/0.12.4/uv-i686-unknown-linux-gnu.tar.gz"
-        i386.sha256 = "bcf9e594c0867f9bfe91b7979cdac38a86bb9f7136ceba259e727af912127f23"
-        
-        in_subdir = true
-        
-        autoupdate.strategy = "latest_github_release"
-        autoupdate.upstream = "https://github.com/astral-sh/uv"
-        autoupdate.asset.amd64 = "^uv-x86_64-unknown-linux-gnu.tar.gz$"
-        autoupdate.asset.arm64 = "^uv-aarch64-unknown-linux-gnu.tar.gz$"
-        autoupdate.asset.armhf = "^uv-armv7-unknown-linux-gnueabihf.tar.gz$"
-        autoupdate.asset.i386 = "^uv-i686-unknown-linux-gnu.tar.gz$"
-    
     [resources.system_user]
     allow_email = true
     
@@ -107,5 +88,9 @@ ram.runtime = "200M"
     [resources.apt]
     packages = "redis-server, postgresql, libpq-dev, libxslt1-dev, libxml2-dev, libffi-dev, libpcre3-dev, libyaml-dev, libssl-dev, zlib1g-dev, libbz2-dev, libreadline-dev, libsqlite3-dev, libncurses5-dev, libncursesw5-dev, xz-utils, liblzma-dev, uuid-dev, build-essential, libpango1.0-dev, libjpeg62-turbo-dev, postgresql-contrib, python3-venv, libpq-dev, python3-pip, python3-dev, libpq-dev"
 
+    extra.mise.repo = "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg] https://mise.jdx.dev/deb stable main"
+    extra.mise.key = "https://mise.jdx.dev/gpg-key.pub"
+    extra.mise.packages = ["mise"]
+ 
     [resources.database]
     type = "postgresql"
