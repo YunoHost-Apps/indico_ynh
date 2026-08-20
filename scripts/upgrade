@@ -37,25 +37,28 @@ ynh_script_progression "Updating $app's configuration files..."
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression "Upgrading uv..."
+ynh_script_progression "Setting up source files for mise..."
+  ynh_setup_source --dest_dir="$install_dir/.mise/bin" --source_id="mise"
+  chmod +x "$install_dir/.mise/bin/bin/mise"
 
-    ynh_setup_source --dest_dir="$install_dir/.uv" --source_id="uv"
-    chmod +x "$install_dir/.uv/uv"
-    export PATH="$install_dir/.uv:$PATH"
-    export UV_PYTHON_INSTALL_DIR="$install_dir/.python_runtime"
-    export UV_CACHE_DIR="$install_dir/.uv_cache"
+ynh_script_progression "Preparing mise config..."
+  export PATH="$install_dir/.mise/bin/bin:$PATH"
+  export MISE_DATA_DIR="$install_dir/.mise/data"
+  export MISE_CONFIG_DIR="$install_dir/.mise/config"
+  export MISE_CACHE_DIR="$install_dir/.mise/cache"
+  export MISE_STATE_DIR="$install_dir/.mise/state"
+  export MISE_YES=1
+  mkdir -p "$MISE_DATA_DIR" "$MISE_CONFIG_DIR" "$MISE_CACHE_DIR" "$MISE_STATE_DIR"
+  ynh_config_add --template=".mise.toml" --destination="$install_dir/.mise.toml"
+  ynh_config_add --template=".bashrc" --destination="$install_dir/.bashrc"
+
+  ynh_hide_warnings eval "$(mise activate bash)"
 
 ynh_script_progression "Upgrading source files..."
 
     pushd $install_dir
         ln -sf web/indico.wsgi wsgi.py
-        source "$install_dir/.venv/bin/activate"
-        uv pip install -U indico 2>&1
-        uv pip install -U indico-plugins 2>&1
-        uv pip install -U granian 2>&1
-        indico db upgrade 2>&1
-        indico db --all-plugins upgrade 2>&1
-        deactivate
+        ynh_hide_warnings mise run upgrade
     popd
     
     chown -R "$app:www-data" "$install_dir"

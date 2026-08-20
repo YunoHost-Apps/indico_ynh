@@ -72,25 +72,22 @@ ram.runtime = "200M"
         sha256 = "e2f9ca97fb8e4babf92f7452f0373ab8c76208fab7769d12329df6ff6ab716ef"
     
         autoupdate.strategy = "latest_github_tag"
-    
-        [resources.sources.uv]
-        amd64.url = "https://github.com/astral-sh/uv/releases/download/0.12.4/uv-x86_64-unknown-linux-gnu.tar.gz"
-        amd64.sha256 = "c8c60f47e6f88d18dbf6f33d7279fb1fbf7ae76631768152cf5578c3d65729b4"
-        arm64.url = "https://github.com/astral-sh/uv/releases/download/0.12.4/uv-aarch64-unknown-linux-gnu.tar.gz"
-        arm64.sha256 = "49d881b3403187e1f1789720881e77e4251ad4259d86c4844862657d2a35d13f"
-        armhf.url = "https://github.com/astral-sh/uv/releases/download/0.12.4/uv-armv7-unknown-linux-gnueabihf.tar.gz"
-        armhf.sha256 = "fd9d223afc79a4d116d48269ea8cdc00cdeb0637d028843910650abc037e7c4f"
-        i386.url = "https://github.com/astral-sh/uv/releases/download/0.12.4/uv-i686-unknown-linux-gnu.tar.gz"
-        i386.sha256 = "bcf9e594c0867f9bfe91b7979cdac38a86bb9f7136ceba259e727af912127f23"
+
+    [resources.sources.mise]
+        amd64.url = "https://github.com/jdx/mise/releases/download/v2026.8.9/mise-v2026.8.9-linux-x64.tar.gz"
+        amd64.sha256 = "790c3ea7fe7e97572aef0ca9b27c09aad162e0ffa85d70797cc3da24b8e1cea6"
+        arm64.url = "https://github.com/jdx/mise/releases/download/v2026.8.9/mise-v2026.8.9-linux-arm64.tar.gz"
+        arm64.sha256 = "e289909e414bad0929172443bb99056867e933b858964b36bbed1c5f6e81b92b"
+        armhf.url = "https://github.com/jdx/mise/releases/download/v2026.8.9/mise-v2026.8.9-linux-armv7.tar.gz"
+        armhf.sha256 = "a64e12184c2b8df56ae5ca8f807a5b00a3e7eff12cfbcf35e0ae545fcaa27067"
         
         in_subdir = true
         
         autoupdate.strategy = "latest_github_release"
-        autoupdate.upstream = "https://github.com/astral-sh/uv"
-        autoupdate.asset.amd64 = "^uv-x86_64-unknown-linux-gnu.tar.gz$"
-        autoupdate.asset.arm64 = "^uv-aarch64-unknown-linux-gnu.tar.gz$"
-        autoupdate.asset.armhf = "^uv-armv7-unknown-linux-gnueabihf.tar.gz$"
-        autoupdate.asset.i386 = "^uv-i686-unknown-linux-gnu.tar.gz$"
+        autoupdate.upstream = "https://github.com/jdx/mise"
+        autoupdate.asset.amd64 = "^mise-v.*-linux-x64\\.tar\\.gz$"
+        autoupdate.asset.arm64 = "^mise-v.*-linux-arm64\\.tar\\.gz$"
+        autoupdate.asset.armhf = "^mise-v.*-linux-armv7\\.tar\\.gz$"
     
     [resources.system_user]
     allow_email = true
@@ -106,6 +103,6 @@ ram.runtime = "200M"
 
     [resources.apt]
     packages = "redis-server, postgresql, libpq-dev, libxslt1-dev, libxml2-dev, libffi-dev, libpcre3-dev, libyaml-dev, libssl-dev, zlib1g-dev, libbz2-dev, libreadline-dev, libsqlite3-dev, libncurses5-dev, libncursesw5-dev, xz-utils, liblzma-dev, uuid-dev, build-essential, libpango1.0-dev, libjpeg62-turbo-dev, postgresql-contrib, python3-venv, libpq-dev, python3-pip, python3-dev, libpq-dev"
-
+ 
     [resources.database]
     type = "postgresql"
