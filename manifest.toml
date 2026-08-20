@@ -86,11 +86,7 @@ ram.runtime = "200M"
     [resources.ports]
 
     [resources.apt]
-    packages = "redis-server, postgresql, libpq-dev, libxslt1-dev, libxml2-dev, libffi-dev, libpcre3-dev, libyaml-dev, libssl-dev, zlib1g-dev, libbz2-dev, libreadline-dev, libsqlite3-dev, libncurses5-dev, libncursesw5-dev, xz-utils, liblzma-dev, uuid-dev, build-essential, libpango1.0-dev, libjpeg62-turbo-dev, postgresql-contrib, python3-venv, libpq-dev, python3-pip, python3-dev, libpq-dev"
-
-    extra.mise.repo = "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg] https://mise.jdx.dev/deb stable main"
-    extra.mise.key = "https://mise.jdx.dev/gpg-key.pub"
-    extra.mise.packages = ["mise"]
+    packages = "redis-server, postgresql, libpq-dev, libxslt1-dev, libxml2-dev, libffi-dev, libpcre3-dev, libyaml-dev, libssl-dev, zlib1g-dev, libbz2-dev, libreadline-dev, libsqlite3-dev, libncurses5-dev, libncursesw5-dev, xz-utils, liblzma-dev, uuid-dev, build-essential, libpango1.0-dev, libjpeg62-turbo-dev, postgresql-contrib, python3-venv, libpq-dev, python3-pip, python3-dev, libpq-dev", "extrepo"
  
     [resources.database]
     type = "postgresql"
