@@ -25,6 +25,8 @@ helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
 
+cpe ="cpe:2.3:a:cern:indico" 
+
 ldap = false
 sso = false
 
